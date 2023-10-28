@@ -12,7 +12,7 @@ Poner instrucciones
 ## Installation
 
 ## Related scientific articles
-"<html>
+<html>
 <p>Articles related to the data and models presented in this library are listed below. </p>
 <ol>
 <li>Sep&uacute;lveda-Oviedo EH, Bermeo Clavijo LE, M&eacute;ndez C&oacute;rdoba LC.
@@ -44,6 +44,6 @@ OpenModelica-based virtual simulator for the cardiovascular and respiratory phys
 
 <li>Avery, G., Fletcher, M., y MacDonald, M. (1999). Neonatology: Pathophysiology and management of the newborn (5th Edition). Lippincott Williams and Wilkins, Philadelphia.</li>
 </ol>
-</html>"
+</html>
 
 
