@@ -30,9 +30,9 @@ To run this library it is necessary to have the following prerequisites installe
 <html>
 <ul>
 <li>Download the PatientEvoPhysio.mo file</li>
-<li>Modelica. Version 3.2.3</li>
-<li>Physiolibrary. Version 2.3.1</li>
-<li>The simulation and modeling environment that supports Modelica 3.2.3, such as: 
+<li>Install Modelica. Version 3.2.3</li>
+<li>Install Physiolibrary. Version 2.3.1</li>
+<li>Download and install the simulation and modeling environment that supports Modelica 3.2.3, such as: 
   <a href="https://www.3ds.com/fr/produits-et-services/catia/produits/dymola/">Dymola</a>,
   <a href="https://openmodelica.org/">OpenModelica</a>,
   <a href="https://jmodelica.org/">JModelica</a>
