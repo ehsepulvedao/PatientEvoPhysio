@@ -52,11 +52,11 @@ https://unvlab.unal.edu.co/unvl.php?&_1node=2147488259
 <ul>
 Contributors:
 <li><a href="https://www.researchgate.net/profile/Edgar-Sepulveda-Oviedo">Edgar Hernando Sep&uacute;lveda-Oviedo</a></li>
-  <p>Laboratory for Analysis and Architecture of Systems, Toulouse, France</p>
+  <p>Laboratory for Analysis and Architecture of Systems, Toulouse, France.</p>
 <li><a href="https://www.researchgate.net/profile/Leonardo-Bermeo">Leonardo Bermeo Clavijo</a></li>
-  <p>Universidad Nacional de Colombia, ,Facultad de Ingenier&iacute;a, Departamento de ingenier&iacute;a el&eacute;ctrica y electr&oacute;nica, Bogot&aacute;, Colombia</p>
+  <p>Universidad Nacional de Colombia, ,Facultad de Ingenier&iacute;a, Departamento de ingenier&iacute;a el&eacute;ctrica y electr&oacute;nica, Bogot&aacute;, Colombia.</p>
 <li><a href="https://www.researchgate.net/profile/Luis-Mendez-Cordoba">Luis Carlos M&eacute;ndez-C&oacute;rdoba</a></li>
-  <p>Universidad Nacional de Colombia, ,Instituto Materno Infantil -- Hospital La Victoria Sede, Bogot&aacute;, Colombia</p>
+  <p>Universidad Nacional de Colombia, ,Instituto Materno Infantil -- Hospital La Victoria Sede, Bogot&aacute;, Colombia.</p>
 </ul>
 
 ## Related scientific articles
