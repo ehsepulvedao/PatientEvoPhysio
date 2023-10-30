@@ -7,19 +7,18 @@ The internal structure of the library is as follows:
 
 ![image](https://github.com/ehsepulvedao/PatientEvoPhysio/assets/7245709/b984a87f-c5c8-4d01-8544-f79505e25cea)
 
-Como se puede observar en la Figura, la libreria esta compuesta por 8 paquetes. El contenido de cada paquete se explica a continuación:
+As can be seen in the Figure, the library is made up of 8 packages. The content of each package is explained below:
 
 <html>
 <ol>
-<li>Icons: Este paquete contiene los iconos de todos los componentes que constituyen los modelos fisiologicos de la libreria.</li>
-<li>Components: Este paquete contiene todos los coponentes que son usados para ensamblar los diferentes escenarios fisiologicos para evaluación de la evolución de los pacientes.</li>
-<li>Types: Contiene tipos de datos particulares. Todos estos datos son modificaciones de los datos primitivos de Modelica.</li>
-<li>Scenarios: Contienen multiples modelos dividios en 4 grandes categorias: Adultos, niños, neonatos y fetales.</li>
-<li>Connectors: Este paquete contienen diferentes conectores que permiten la interacción entre las variables internas de los componentes.
-<li>Function: Este paquete contiene funciones matematicas como la función de Hill, la función inversa de Hill, funciones respiratorias pulmonares o placentarias que determinan los cambios en la saturación de oxigeno variante en el tiempo</li>
-<li>Signals: Este paquete contiene los componentes que determinan el comportamiento variante en el tiempo de aspectos como la elastancia variable de ciertos componentes vasculares, la respiración pulmonar, la respiración placentaria, el foramen oval, entre otros.</li>
-<li>UsersGuide: Contienen información de contacto, agradecimientos  los articulos cientificos relacionados con el desarrollo de esta libreria.</li>
-<li></li>
+<li>Icons: This package contains the icons of all the components that make up the physiological models of the library.</li>
+<li>Components: This package contains all the components that are used to assemble the different physiological scenarios for evaluating the evolution of patients.</li>
+<li>Types: Contains particular data types. All of this data is modifications of Modelica's primitive data.</li>
+<li>Scenarios: They contain multiple models divided into 4 large categories: Adults, children, neonates and fetuses.</li>
+<li>Connectors: This package contains different connectors that allow interaction between the internal variables of the components.
+<li>Function: This package contains mathematical functions such as the Hill function, the inverse Hill function, pulmonary or placental respiratory functions that determine changes in time-varying oxygen saturation</li>
+<li>Signals: This package contains the components that determine the time-varying behavior of aspects such as the variable elastance of certain vascular components, pulmonary respiration, placental respiration, the foramen ovale, among others.</li>
+<li>UsersGuide: Contains contact information, acknowledgments of scientific articles related to the development of this library.</li>
 </ol>
 </html>
 
