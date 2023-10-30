@@ -1,9 +1,27 @@
 # PatientEvoPhysio
 Free open source Model Library designed to evaluate human physiological evolution in adulthood, childhood, neonatal and fetal life in the face of the occurrence of cardiovascular and respiratory anomalies or different clinical practices.
 
+## Library description
+
 The internal structure of the library is as follows:
 
-![image](https://github.com/ehsepulvedao/PatientEvoPhysio/assets/7245709/090904a4-6170-4310-b82d-ba259fb744f3)
+![image](https://github.com/ehsepulvedao/PatientEvoPhysio/assets/7245709/b984a87f-c5c8-4d01-8544-f79505e25cea)
+
+Como se puede observar en la Figura, la libreria esta compuesta por 8 paquetes. El contenido de cada paquete se explica a continuación:
+
+<html>
+<ul>
+<li>Icons: Este paquete contiene los iconos de todos los componentes que constituyen los modelos fisiologicos de la libreria.</li>
+<li>Components: Este paquete contiene todos los coponentes que son usados para ensamblar los diferentes escenarios fisiologicos para evaluación de la evolución de los pacientes.</li>
+<li>Types: Contiene tipos de datos particulares. Todos estos datos son modificaciones de los datos primitivos de Modelica.</li>
+<li>Scenarios: Contienen multiples modelos dividios en 4 grandes categorias: Adultos, niños, neonatos y fetales.</li>
+<li>Connectors: Este paquete contienen diferentes conectores que permiten la interacción entre las variables internas de los componentes.
+<li>Function: Este paquete contiene funciones matematicas como la función de Hill, la función inversa de Hill, funciones respiratorias pulmonares o placentarias que determinan los cambios en la saturación de oxigeno variante en el tiempo</li>
+<li>Signals: Este paquete contiene los componentes que determinan el comportamiento variante en el tiempo de aspectos como la elastancia variable de ciertos componentes vasculares, la respiración pulmonar, la respiración placentaria, el foramen oval, entre otros.</li>
+<li>UsersGuide: Contienen información de contacto, agradecimientos  los articulos cientificos relacionados con el desarrollo de esta libreria.</li>
+<li></li>
+</ul>
+</html>
 
 
 ## Installation
@@ -30,8 +48,14 @@ This library will soon be available as part of the VirtualLabUN project of the N
 https://unvlab.unal.edu.co/unvl.php?&_1node=2147488259
 
 ## Development and contribution
-
-
+<html>
+<p>Release manager: <a href="https://www.researchgate.net/profile/Edgar-Sepulveda-Oviedo">Edgar Hernando Sep&uacute;lveda-Oviedo</a></p>
+<ul>
+Contributors:
+<li><a href="https://www.researchgate.net/profile/Edgar-Sepulveda-Oviedo">Edgar Hernando Sep&uacute;lveda-Oviedo</a></li>, 
+<li><a href="https://www.researchgate.net/profile/Leonardo-Bermeo">Leonardo Bermeo Clavijo</a></li>, 
+<li><a href="https://www.researchgate.net/profile/Luis-Mendez-Cordoba">Luis Carlos M&eacute;ndez-C&oacute;rdoba</a></li>
+</ul>
 
 ## Related scientific articles
 <html>
