@@ -1,15 +1,37 @@
 # PatientEvoPhysio
 Free open source Model Library designed to evaluate human physiological evolution in adulthood, childhood, neonatal and fetal life in the face of the occurrence of cardiovascular and respiratory anomalies or different clinical practices.
 
-## Installation
-Need to install dependencies, use .... to install dependencies
+The internal structure of the library is as follows:
 
-```bash
-Poner instrucciones
-```
-## Configure
+![image](https://github.com/ehsepulvedao/PatientEvoPhysio/assets/7245709/090904a4-6170-4310-b82d-ba259fb744f3)
+
 
 ## Installation
+
+To run this library it is necessary to have the following prerequisites installed:
+
+<html>
+<ul>
+<li>Download the PatientEvoPhysio.mo file</li>
+<li>Modelica. Version 3.2.3</li>
+<li>Physiolibrary. Version 2.3.1</li>
+<li>The simulation and modeling environment that supports Modelica 3.2.3, such as: 
+  <a href="https://www.3ds.com/fr/produits-et-services/catia/produits/dymola/">Dymola</a>,
+  <a href="https://openmodelica.org/">OpenModelica</a>,
+  <a href="https://jmodelica.org/">JModelica</a>
+</li>
+</ul>
+</html>
+
+## Future work
+
+This library will soon be available as part of the VirtualLabUN project of the National University of Colombia. Learn more about the project in the following link.
+
+https://unvlab.unal.edu.co/unvl.php?&_1node=2147488259
+
+## Development and contribution
+
+
 
 ## Related scientific articles
 <html>
