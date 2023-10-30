@@ -10,7 +10,7 @@ The internal structure of the library is as follows:
 Como se puede observar en la Figura, la libreria esta compuesta por 8 paquetes. El contenido de cada paquete se explica a continuación:
 
 <html>
-<ul>
+<ol>
 <li>Icons: Este paquete contiene los iconos de todos los componentes que constituyen los modelos fisiologicos de la libreria.</li>
 <li>Components: Este paquete contiene todos los coponentes que son usados para ensamblar los diferentes escenarios fisiologicos para evaluación de la evolución de los pacientes.</li>
 <li>Types: Contiene tipos de datos particulares. Todos estos datos son modificaciones de los datos primitivos de Modelica.</li>
@@ -20,7 +20,7 @@ Como se puede observar en la Figura, la libreria esta compuesta por 8 paquetes. 
 <li>Signals: Este paquete contiene los componentes que determinan el comportamiento variante en el tiempo de aspectos como la elastancia variable de ciertos componentes vasculares, la respiración pulmonar, la respiración placentaria, el foramen oval, entre otros.</li>
 <li>UsersGuide: Contienen información de contacto, agradecimientos  los articulos cientificos relacionados con el desarrollo de esta libreria.</li>
 <li></li>
-</ul>
+</ol>
 </html>
 
 
@@ -52,9 +52,12 @@ https://unvlab.unal.edu.co/unvl.php?&_1node=2147488259
 <p>Release manager: <a href="https://www.researchgate.net/profile/Edgar-Sepulveda-Oviedo">Edgar Hernando Sep&uacute;lveda-Oviedo</a></p>
 <ul>
 Contributors:
-<li><a href="https://www.researchgate.net/profile/Edgar-Sepulveda-Oviedo">Edgar Hernando Sep&uacute;lveda-Oviedo</a></li>, 
-<li><a href="https://www.researchgate.net/profile/Leonardo-Bermeo">Leonardo Bermeo Clavijo</a></li>, 
+<li><a href="https://www.researchgate.net/profile/Edgar-Sepulveda-Oviedo">Edgar Hernando Sep&uacute;lveda-Oviedo</a></li>
+  <p>Laboratory for Analysis and Architecture of Systems, Toulouse, France</p>
+<li><a href="https://www.researchgate.net/profile/Leonardo-Bermeo">Leonardo Bermeo Clavijo</a></li>
+  <p>Universidad Nacional de Colombia, ,Facultad de Ingenier&iacute;a, Departamento de ingenier&iacute;a el&eacute;ctrica y electr&oacute;nica, Bogot&aacute;, Colombia</p>
 <li><a href="https://www.researchgate.net/profile/Luis-Mendez-Cordoba">Luis Carlos M&eacute;ndez-C&oacute;rdoba</a></li>
+  <p>Universidad Nacional de Colombia, ,Instituto Materno Infantil -- Hospital La Victoria Sede, Bogot&aacute;, Colombia</p>
 </ul>
 
 ## Related scientific articles
