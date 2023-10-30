@@ -16,7 +16,7 @@ As can be seen in the Figure, the library is made up of 8 packages. The content 
 <li>Types: Contains particular data types. All of this data is modifications of Modelica's primitive data.</li>
 <li>Scenarios: They contain multiple models divided into 4 large categories: Adults, children, neonates and fetuses.</li>
 <li>Connectors: This package contains different connectors that allow interaction between the internal variables of the components.
-<li>Function: This package contains mathematical functions such as the Hill function, the inverse Hill function, pulmonary or placental respiratory functions that determine changes in time-varying oxygen saturation</li>
+<li>Function: This package contains mathematical functions such as the Hill function, the inverse Hill function, pulmonary or placental respiratory functions that determine changes in time-varying oxygen saturation.</li>
 <li>Signals: This package contains the components that determine the time-varying behavior of aspects such as the variable elastance of certain vascular components, pulmonary respiration, placental respiration, the foramen ovale, among others.</li>
 <li>UsersGuide: Contains contact information, acknowledgments of scientific articles related to the development of this library.</li>
 </ol>
