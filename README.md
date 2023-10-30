@@ -61,6 +61,11 @@ Contributors:
   <p>Universidad Nacional de Colombia, ,Instituto Materno Infantil -- Hospital La Victoria Sede, Bogot&aacute;, Colombia.</p>
 </ul>
 
+## Issues
+You may report any issues to the email ehsepulved@laas.fr or lbermeoc@unal.edu.co
+
+recipient@email.com?bcc=blindcarboncopy@email.com">Click here to email us
+
 ## Related scientific articles
 <html>
 <p>Articles related to the data and models presented in this library are listed below. </p>
