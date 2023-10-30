@@ -1,8 +1,7 @@
 # PatientEvoPhysio
 Free open source Model Library designed to evaluate human physiological evolution in adulthood, childhood, neonatal and fetal life in the face of the occurrence of cardiovascular and respiratory anomalies or different clinical practices.
 
-![image](https://github.com/ehsepulvedao/PatientEvoPhysio/assets/7245709/4a95f4d1-c933-4d91-85e3-a0059d0f3363)
-
+![image](https://github.com/ehsepulvedao/PatientEvoPhysio/assets/7245709/967f427d-3f07-4a28-b29f-1e0a24ae1af4)
 
 ## Library description
 
