@@ -2379,9 +2379,9 @@ This package contains all the components for the construction of multiple physio
           Placement(visible = true, transformation(origin = {236, 62}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
         Signals.Respirations.Placental_Respiration placental_Respiration1 annotation(
           Placement(visible = true, transformation(origin = {-126, -236}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-        Signals.Clamping.UCC_resistance resis_Siste_pinza1(Cf(displayUnit = "ml/(mmHg.min)") = 2.289565249831826e-17, Co(displayUnit = "ml/(mmHg.min)") = 2.289565249831826e-10,     td = 10 ) annotation(
+        Signals.Clamping.UCC_resistance resis_Siste_pinza1(Cf(displayUnit = "ml/(mmHg.min)") = 2.289565249831826e-17, Co(displayUnit = "ml/(mmHg.min)") = 2.289565249831826e-10) annotation(
           Placement(visible = true, transformation(origin = {-126, -294}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
-        Signals.Clamping.UCC_resistance resis_Siste_pinza2(Cf(displayUnit = "ml/(mmHg.min)") = 4.579130495913344e-17, Co(displayUnit = "ml/(mmHg.min)") = 3.931140334557942e-11,     td = 10 ) annotation(
+        Signals.Clamping.UCC_resistance resis_Siste_pinza2(Cf(displayUnit = "ml/(mmHg.min)") = 4.579130495913344e-17, Co(displayUnit = "ml/(mmHg.min)") = 3.931140334557942e-11) annotation(
           Placement(transformation(origin = {24, -300}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
         Signals.Respirations.PO2_altitude pulmonary_Respiration_altitud1 annotation(
           Placement(visible = true, transformation(origin = {-40, 258}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -5165,7 +5165,6 @@ This package contains all the components for the construction of multiple physio
 model Systemic_Vascular
 
   parameter Modelica.SIunits.Time tc = 86400 "Time of umbilical cord clamping";
-  Modelica.SIunits.Time t0 "Time where the change in vascular resistance begins";
   parameter Modelica.SIunits.Time phase_one = 43200 "First stage";
   parameter Modelica.SIunits.Time phase_two = 86400 "Second stage";
   
