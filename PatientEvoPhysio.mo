@@ -4575,13 +4575,13 @@ This package contains all the components for the construction of multiple physio
         parameter Types.Pressure P_Con_O2 "pressure of O2 concentration";
         parameter Types.Mass Conc_Hb "Concentration of Hb in blood in [g Hb/dl]";
         parameter Types.Temperature T "Temperature";
-        Time tm "relative time from the beginning of cardiac cycle";
+        parameter Modelica.SIunits.Time tm "relative time from the beginning of cardiac cycle";
         parameter Types.Frequency HR "Heart rate";
         discrete Types.Time HP "heart period";
         discrete Types.Time t0 "time of beginning of the cardiac cycle";
-        Connectors.ConcentrationOutput O2_inPAB annotation(
+        Connectors.ConcentracionOutput O2_inPAB annotation(
           Placement(visible = true, transformation(origin = {52, -124}, extent = {{-36, -22}, {-16, -2}}, rotation = -90), iconTransformation(origin = {-70, -96}, extent = {{-10, -10}, {10, 10}}, rotation = 270)));
-        Connectors.ConcentrationInput O2_PA annotation(
+        Connectors.ConcentracionInput O2_PA annotation(
           Placement(visible = true, transformation(origin = {-40, -98}, extent = {{-10, -10}, {10, 10}}, rotation = 90), iconTransformation(origin = {70, -96}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
         Types.Concentration O2_i "Temperature";
         Real r, K, Tao, a, b, H_PAB, H_PA;
@@ -4605,8 +4605,8 @@ This package contains all the components for the construction of multiple physio
         //---------------------------------
         //----------Hill Function----------
         //---------------------------------
-        H_PAB = H(Conc_Hb, O2_inPAB, PO2_50);
-        H_PA = H(Conc_Hb, O2_PA, PO2_50);
+        H_PAB = Functions.H(Conc_Hb, O2_inPAB, PO2_50);
+        H_PA = Functions.H(Conc_Hb, O2_PA, PO2_50);
 
         K = 62.3656;
         a = ((H_PAB + H_PA)/(Gamma_PAB*K*T));
@@ -4654,11 +4654,12 @@ This package contains all the components for the construction of multiple physio
         parameter Types.Pressure P_Con_O2(start = 1e-12) "pressure of O2 concentration";
         parameter Types.Mass Conc_Hb(start = 1e-13) "Concentration of Hb in blood in [g Hb/dl]";
         parameter Types.Temperature T(start = 30) "Temperature";
-        Connectors.ConcentrationInput O2_PLAC(start = 1e-12) annotation(
+        
+        Connectors.ConcentracionInput O2_PLAC(start = 1e-12) annotation(
           Placement(visible = true, transformation(origin = {-40, -98}, extent = {{-10, -10}, {10, 10}}, rotation = 90), iconTransformation(origin = {-54, -92}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
         Connectors.VolumeFlowRateInput Q_PLAC(start = 1e-12) annotation(
           Placement(visible = true, transformation(origin = {100, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 180), iconTransformation(origin = {-90, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-        Connectors.ConcentrationOutput O2_inPB annotation(
+        Connectors.ConcentracionOutput O2_inPB annotation(
           Placement(visible = true, transformation(origin = {52, -124}, extent = {{-36, -22}, {-16, -2}}, rotation = -90), iconTransformation(origin = {46, -94}, extent = {{-10, -10}, {10, 10}}, rotation = 270)));
         Types.Concentration O2_u "Uterine Concentration";
         Real r, Tao, a, b, H_PB_PLAC, H_PLAC, H_M;
@@ -4805,9 +4806,9 @@ This package contains all the components for the construction of multiple physio
         //Ventilation-Perfusion Ratio
         Types.Concentration O_PB_PLAC "Oxygen concentration after inspiring";
         //Oxygen concentration after inspiring
-        Connectors.ConcentrationInput O2_PLAC annotation(
+        Connectors.ConcentracionInput O2_PLAC annotation(
           Placement(visible = true, transformation(origin = {-40, -98}, extent = {{-10, -10}, {10, 10}}, rotation = 90), iconTransformation(origin = {70, -96}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
-        Connectors.ConcentrationOutput O2_inPB annotation(
+        Connectors.ConcentracionOutput O2_inPB annotation(
           Placement(visible = true, transformation(origin = {52, -124}, extent = {{-36, -22}, {-16, -2}}, rotation = -90), iconTransformation(origin = {-70, -96}, extent = {{-10, -10}, {10, 10}}, rotation = 270)));
         parameter Types.Mass Conc_Hb = 12 "Concentration of Hb in blood in [g Hb/dl]";
         parameter Types.Pressure PO2_50 = 26.6 "Partial pressure of O2 at 50% ";
