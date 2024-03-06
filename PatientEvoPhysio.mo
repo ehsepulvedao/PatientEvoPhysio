@@ -363,10 +363,10 @@ The transition from fetus to neonate is governed by the availability of oxygen i
       open = passableVariable > Modelica.Constants.eps;
       dp = passableVariable*unitFlow*(if open then 1/gon else 1) + Pknee;
       volumeFlowRate = passableVariable*unitPressure*(if open then 1 else goff) + goff*Pknee;
-      //----------------------------------
-      //----Preferential streaming of-----
-      //-----umbilical venous return------
-      //----------------------------------
+//----------------------------------
+//----Preferential streaming of-----
+//-----umbilical venous return------
+//----------------------------------
       Q_FO = volumeFlowRate;
       q_in.conc = inStream(q_out.conc);
       q_out.conc = inStream(q_in.conc);
@@ -401,136 +401,136 @@ The transition from fetus to neonate is governed by the availability of oxygen i
         </html>"));
     end Foramen_Ovale_Valve;
 
-    model Constante_Elastance
-      extends Icons.Constant_time_elastance;
-      extends Physiolibrary.SteadyStates.Interfaces.SteadyState(state_start = volume_start, storeUnit = "ml");
-      Connectors.Input_Connector q_in(conc(start = (((SO2/100))*((Conc_Hb*1340)*((1)/(1000*22.4)))))) annotation(
-        Placement(transformation(extent = {{-14, -14}, {14, 14}})));
-      constant Types.Volume NormalVolume = 0.001 "1 liter" annotation(
-        Evaluate = true,
-        HideResult = true);
-      parameter Types.Volume volume_start = 1e-11 annotation(
-        Dialog(group = "Initialization"));
-      Types.Volume excessVolume ;
-      parameter Boolean useV0Input = false  annotation(
-        Evaluate = true,
-        HideResult = true,
-        choices(checkBox = true),
-        Dialog(group = "External inputs/outputs"));
-      parameter Types.Volume ZeroPressureVolume = 1e-11 annotation(
-        Dialog(enable = not useV0Input));
-      parameter Types.Volume CollapsingPressureVolume = 1e-12 ;
-      
-      //------------------------------------
+model Constante_Elastance
+  extends Icons.Constant_time_elastance;
+  extends Physiolibrary.SteadyStates.Interfaces.SteadyState(state_start = volume_start, storeUnit = "ml");
+  Connectors.Input_Connector q_in(conc(start = (((SO2/100))*((Conc_Hb*1340)*((1)/(1000*22.4)))))) annotation(
+    Placement(transformation(extent = {{-14, -14}, {14, 14}})));
+  constant Types.Volume NormalVolume = 0.001 "1 liter" annotation(
+    Evaluate = true,
+    HideResult = true);
+  parameter Types.Volume volume_start = 1e-11 annotation(
+    Dialog(group = "Initialization"));
+  Types.Volume excessVolume ;
+  parameter Boolean useV0Input = false  annotation(
+    Evaluate = true,
+    HideResult = true,
+    choices(checkBox = true),
+    Dialog(group = "External inputs/outputs"));
+  parameter Types.Volume ZeroPressureVolume = 1e-11 annotation(
+    Dialog(enable = not useV0Input));
+  parameter Types.Volume CollapsingPressureVolume = 1e-12 ;
+  //------------------------------------
       //------------------------------------
       //---------Metabolic Rate-------------
       //------------------------------------
       //------------------------------------
       parameter Types.MolarFlow Consumo = 0 ;
-      Types.MolarFlow Mi;
-      parameter Real SO2(final unit = "%") = 40 "% Saturation";
-      Real Saturacion(start = SO2);
-      parameter Modelica.SIunits.MassConcentration Conc_Hb = 175 "Concentration of Hb in blood in [mol Hb/l]";
-      Modelica.SIunits.Concentration O2_Hb_max "Concentration carried by hemoglobin";
-      Real k1 = 1.62, k2 = 0.22;
-      Connectors.OxygenFlowOutput O2_current annotation(
-        Placement(transformation(origin = {91, -104}, extent = {{-20, -20}, {20, 20}}, rotation = 270), transformation(origin = {86, -80}, extent = {{-20, -20}, {20, 20}}, rotation = -90)));
-      parameter Boolean useOxygenInput = false annotation(
-        Evaluate = true,
-        HideResult = true,
-        choices(checkBox = true),
-        Dialog(group = "External inputs/outputs"));
-      parameter Types.MolarFlow Oxygen = 1e-5 annotation(
-        Dialog(enable = not useOxygenInput));
+  Types.MolarFlow Mi;
+  parameter Real SO2(final unit = "%") = 40 "% Saturation";
+  Real Saturacion(start = SO2);
+  parameter Modelica.SIunits.MassConcentration Conc_Hb = 175 "Concentration of Hb in blood in [mol Hb/l]";
+  Modelica.SIunits.Concentration O2_Hb_max "Concentration carried by hemoglobin";
+  Real k1 = 1.62, k2 = 0.22;
+  Connectors.OxygenFlowOutput O2_current annotation(
+    Placement(transformation(origin = {91, -104}, extent = {{-20, -20}, {20, 20}}, rotation = 270), transformation(origin = {86, -80}, extent = {{-20, -20}, {20, 20}}, rotation = -90)));
+  parameter Boolean useOxygenInput = false annotation(
+    Evaluate = true,
+    HideResult = true,
+    choices(checkBox = true),
+    Dialog(group = "External inputs/outputs"));
+  parameter Types.MolarFlow Oxygen = 1e-5 annotation(
+    Dialog(enable = not useOxygenInput));
+  //------------------------------------
       //------------------------------------
       //------------------------------------
       //------------------------------------
-      //------------------------------------
-      Connectors.VolumeInput zeroPressureVolume(start = ZeroPressureVolume) = zpv if useV0Input annotation(
-        Placement(transformation(extent = {{-20, -20}, {20, 20}}, rotation = 270, origin = {-80, 80})));
-      parameter Boolean useComplianceInput = false annotation(
-        Evaluate = true,
-        HideResult = true,
-        choices(checkBox = true),
-        Dialog(group = "External inputs/outputs"));
-      parameter Types.Compliance Compliance = 1 annotation(
-        Dialog(enable = not useComplianceInput));
-      Connectors.ComplianceInput compliance(start = Compliance) = c if useComplianceInput annotation(
-        Placement(visible = true, transformation(origin = {0, 80}, extent = {{-20, -20}, {20, 20}}, rotation = 270), iconTransformation(origin = {0, 80}, extent = {{-20, -20}, {20, 20}}, rotation = 270)));
-      parameter Boolean useExternalPressureInput = false annotation(
-        Evaluate = true,
-        HideResult = true,
-        choices(checkBox = true),
-        Dialog(group = "External inputs/outputs"));
-      parameter Types.Pressure ExternalPressure = 0 annotation(
-        Dialog(enable = not useExternalPressureInput));
-      parameter Types.Pressure MinimalCollapsingPressure = -101325;
-      Connectors.PressureInput externalPressure(start = ExternalPressure) = ep if useExternalPressureInput annotation(
-        Placement(transformation(extent = {{-20, -20}, {20, 20}}, rotation = 270, origin = {80, 80})));
-      Connectors.VolumeOutput volume annotation(
-        Placement(transformation(origin = {1, -100}, extent = {{-20, -20}, {20, 20}}, rotation = 270), transformation(origin = {-80, -80}, extent = {{-20, -20}, {20, 20}}, rotation = 270)));
-      Real presion(unit = "mmHG");
-      Real flujo;
-      Modelica.SIunits.AmountOfSubstance solute;
-      Types.Time tiempo_normalizado;
-    protected
-      Types.Volume zpv;
-      Types.Compliance c;
-      Types.Pressure ep;
-      parameter Types.Pressure a = MinimalCollapsingPressure/log(Modelica.Constants.eps);
-    equation
-      if not useV0Input then
-        zpv = ZeroPressureVolume;
-      end if;
-      if not useComplianceInput then
-        c = Compliance;
-      end if;
-      if not useExternalPressureInput then
-        ep = ExternalPressure;
-      end if;
-      excessVolume = max(0, volume - zpv);
-      q_in.pressure = smooth(0, if noEvent(volume > CollapsingPressureVolume) then excessVolume/c + ep else a*log(max(Modelica.Constants.eps, volume/CollapsingPressureVolume)) + ep);
-      state = volume;
-      change = q_in.q;
-      presion = q_in.pressure*0.0075;
-      flujo = q_in.q*6e4;
-      tiempo_normalizado = time/600;
-      Mi = ((Consumo)/(86400));
-      O2_Hb_max = (Conc_Hb*1340)*((1)/(1000*22.4));
-      Saturacion = (q_in.conc/O2_Hb_max)*100;
-      solute = q_in.conc*volume;
-      O2_current = q_in.conc;
-      der(volume*q_in.conc) = actualStream(q_in.conc)*q_in.q - Mi;
-      annotation(
-        Icon(coordinateSystem(preserveAspectRatio = false, extent = {{-100, -100}, {100, 100}}), graphics = {Text(extent = {{-318, -140}, {160, -100}}, textString = "%name", lineColor = {0, 0, 255})}),
-        Documentation(info = "<html>
-  <p>
-  This component represents cavities or compartments that accumulate blood and whose elastance allows the structure to recover its initial shape once the stress deformation has been suppressed.
-  </p>
-  </html>", revisions = "<html>
-    <table>
-    <tr>
-    <td>Authors:</td>
-    <td>Edgar Hernando Sep&uacute;lveda-Oviedo (1,2)</td>
-    <td> Luis Carlos M&eacute;ndez-C&oacute;rdoba (2) </td>
-    <td> Leonardo Bermeo Clavijo (2)</td>
-    </tr>
-    <tr>
-    <td>Copyright:</td>
-    <td>In public domains</td>
-    </tr>
-    <tr>
-    <td>By:</td>
-    <td>(1) Laboratory for Analysis and Architecture of Systems, Toulouse, France</td>
-    <td>(2) Universidad Nacional de Colombia, ,Instituto Materno Infantil -- Hospital La Victoria Sede, Bogot&aacute;, Colombia </td>
-    </tr>
-    <tr>
-    <td>Last revision:</td>
-    <td>October 2023</td>
-    </tr>
-    </table>
-    </html>"));
-    end Constante_Elastance;
+  Connectors.VolumeInput zeroPressureVolume(start = ZeroPressureVolume) = zpv if useV0Input annotation(
+    Placement(transformation(extent = {{-20, -20}, {20, 20}}, rotation = 270, origin = {-80, 80})));
+  parameter Boolean useComplianceInput = false annotation(
+    Evaluate = true,
+    HideResult = true,
+    choices(checkBox = true),
+    Dialog(group = "External inputs/outputs"));
+  parameter Types.Compliance Compliance = 1 annotation(
+    Dialog(enable = not useComplianceInput));
+  Connectors.ComplianceInput compliance(start = Compliance) = c if useComplianceInput annotation(
+    Placement(visible = true, transformation(origin = {0, 80}, extent = {{-20, -20}, {20, 20}}, rotation = 270), iconTransformation(origin = {0, 80}, extent = {{-20, -20}, {20, 20}}, rotation = 270)));
+  parameter Boolean useExternalPressureInput = false annotation(
+    Evaluate = true,
+    HideResult = true,
+    choices(checkBox = true),
+    Dialog(group = "External inputs/outputs"));
+  parameter Types.Pressure ExternalPressure = 0 annotation(
+    Dialog(enable = not useExternalPressureInput));
+  parameter Types.Pressure MinimalCollapsingPressure = -101325;
+  Connectors.PressureInput externalPressure(start = ExternalPressure) = ep if useExternalPressureInput annotation(
+    Placement(transformation(extent = {{-20, -20}, {20, 20}}, rotation = 270, origin = {80, 80})));
+  Connectors.VolumeOutput volume annotation(
+    Placement(transformation(origin = {1, -100}, extent = {{-20, -20}, {20, 20}}, rotation = 270), transformation(origin = {-80, -80}, extent = {{-20, -20}, {20, 20}}, rotation = 270)));
+  Real presion(unit = "mmHG");
+  Real flujo;
+  Modelica.SIunits.AmountOfSubstance solute;
+  Types.Time tiempo_normalizado;
+protected
+  Types.Volume zpv;
+  Types.Compliance c;
+  Types.Pressure ep;
+  parameter Types.Pressure a = MinimalCollapsingPressure/log(Modelica.Constants.eps);
+equation
+  if not useV0Input then
+    zpv = ZeroPressureVolume;
+  end if;
+  if not useComplianceInput then
+    c = Compliance;
+  end if;
+  if not useExternalPressureInput then
+    ep = ExternalPressure;
+  end if;
+  excessVolume = max(0, volume - zpv);
+  q_in.pressure = smooth(0, if noEvent(volume > CollapsingPressureVolume) then excessVolume/c + ep else a*log(max(Modelica.Constants.eps, volume/CollapsingPressureVolume)) + ep);
+  state = volume;
+  change = q_in.q;
+  presion = q_in.pressure*0.0075;
+  flujo = q_in.q*6e4;
+  tiempo_normalizado = time/600;
+  Mi = ((Consumo)/(86400));
+  O2_Hb_max = (Conc_Hb*1340)*((1)/(1000*22.4));
+  Saturacion = (q_in.conc/O2_Hb_max)*100;
+  solute = q_in.conc*volume;
+  O2_current = q_in.conc;
+  der(volume*q_in.conc) = actualStream(q_in.conc)*q_in.q - Mi;
+ 
+  annotation(
+    Icon(coordinateSystem(preserveAspectRatio = false, extent = {{-100, -100}, {100, 100}}), graphics = {Text(extent = {{-318, -140}, {160, -100}}, textString = "%name", lineColor = {0, 0, 255})}),
+    Documentation(info = "<html>
+<p>
+This component represents cavities or compartments that accumulate blood and whose elastance allows the structure to recover its initial shape once the stress deformation has been suppressed.
+</p>
+</html>", revisions = "<html>
+<table>
+<tr>
+<td>Authors:</td>
+<td>Edgar Hernando Sep&uacute;lveda-Oviedo (1,2)</td>
+<td> Luis Carlos M&eacute;ndez-C&oacute;rdoba (2) </td>
+<td> Leonardo Bermeo Clavijo (2)</td>
+</tr>
+<tr>
+<td>Copyright:</td>
+<td>In public domains</td>
+</tr>
+<tr>
+<td>By:</td>
+<td>(1) Laboratory for Analysis and Architecture of Systems, Toulouse, France</td>
+<td>(2) Universidad Nacional de Colombia, ,Instituto Materno Infantil -- Hospital La Victoria Sede, Bogot&aacute;, Colombia </td>
+</tr>
+<tr>
+<td>Last revision:</td>
+<td>October 2023</td>
+</tr>
+</table>
+</html>"));
+end Constante_Elastance;
 
     model Time_Variant_Elastance
       extends Icons.Time_Variant_Elastance;
@@ -2355,7 +2355,7 @@ This package contains all the components for the construction of multiple physio
           Placement(visible = true, transformation(origin = {132, 166}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
         Components.Vascular_Resistance Arteria_umbilical(Conductance(displayUnit = "m3/(Pa.s)") = 2.36001e-09, useConductanceInput = true) annotation(
           Placement(visible = true, transformation(origin = {23, -273}, extent = {{-15, -15}, {15, 15}}, rotation = 180)));
-        Components.Constante_Elastance Placenta(Compliance(displayUnit = "m3/Pa") = 1.12e-08, Conc_Hb = 120, SO2 = 43.2, ZeroPressureVolume = 6e-05, volume_start = 0.000135) annotation(
+        Components.Constante_Elastance Placenta(Compliance= 2.5e-09, Conc_Hb = 120, SO2 = 43.2, ZeroPressureVolume = 6e-05, volume_start = 0.000155) annotation(
           Placement(visible = true, transformation(origin = {-45, -275}, extent = {{-15, -15}, {15, 15}}, rotation = 180)));
         Components.Vascular_Resistance Ducto_venoso(Conductance(displayUnit = "m3/(Pa.s)") = 1.37e-08, useConductanceInput = true, useOxygenInput = true) annotation(
           Placement(visible = true, transformation(origin = {-125, -265}, extent = {{-15, -15}, {15, 15}}, rotation = 180)));
@@ -2379,21 +2379,15 @@ This package contains all the components for the construction of multiple physio
           Placement(visible = true, transformation(origin = {236, 62}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
         Signals.Respirations.Placental_Respiration placental_Respiration1 annotation(
           Placement(visible = true, transformation(origin = {-126, -236}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-        Signals.Clamping.UCC_resistance resis_Siste_pinza1(Cf(displayUnit = "ml/(mmHg.min)") = 2.289565249831826e-17, Co(displayUnit = "ml/(mmHg.min)") = 2.289565249831826e-10) annotation(
+        Signals.Clamping.UCC_resistance resis_Siste_pinza1(Co = 1.625133414332255e-11, Cf = 1.625133414332256e-19, tc = 600, to = 1) annotation(
           Placement(visible = true, transformation(origin = {-126, -294}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
-        Signals.Clamping.UCC_resistance resis_Siste_pinza2(Cf(displayUnit = "ml/(mmHg.min)") = 4.579130495913344e-17, Co(displayUnit = "ml/(mmHg.min)") = 3.931140334557942e-11) annotation(
+        Signals.Clamping.UCC_resistance resis_Siste_pinza2(Cf= 1.250102626409427e-19, Co= 1.250102626409427e-11, tc = 600, to = 1) annotation(
           Placement(transformation(origin = {24, -300}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
-        Signals.Respirations.PO2_altitude pulmonary_Respiration_altitud1 annotation(
-          Placement(visible = true, transformation(origin = {-40, 258}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-        Components.Altitude altitud1 annotation(
+        Components.Altitude altitud1(H = 0)  annotation(
           Placement(visible = true, transformation(origin = {-102, 260}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  Signals.Respirations.PO2_altitude pO2_altitude annotation(
+          Placement(transformation(origin = {-50, 262}, extent = {{-10, -10}, {10, 10}})));
       equation
-        connect(altitud1.P_partial_O2, pulmonary_Respiration_altitud1.P_Con_O2) annotation(
-          Line(points = {{-91, 260}, {-52.8, 260}, {-52.8, 262.4}, {-50.8, 262.4}}, color = {0, 0, 127}));
-        connect(R_Vasos_perifericos_pulmonares.oxygen, pulmonary_Respiration_altitud1.O2_inPAB) annotation(
-          Line(points = {{0, 240}, {-2, 240}, {-2, 260}, {-30, 260}, {-30, 258}}, color = {85, 255, 0}));
-        connect(pulmonary_Respiration_altitud1.O2_PA, Pulmonary_arteries.O2_current) annotation(
-          Line(points = {{-50, 252}, {-84, 252}, {-84, 230}, {-82, 230}}, color = {85, 255, 0}));
         connect(resis_Siste_pinza2.C, Arteria_umbilical.cond) annotation(
           Line(points = {{24, -291}, {22, -291}, {22, -284}, {24, -284}}, color = {0, 0, 127}));
         connect(resis_Siste_pinza1.C, Ducto_venoso.cond) annotation(
@@ -2492,6 +2486,12 @@ This package contains all the components for the construction of multiple physio
           Line(points = {{-216, 14}, {-218, 14}, {-218, 34}, {-218, 34}}, thickness = 0.75, arrow = {Arrow.None, Arrow.Open}));
         connect(Valvula_pulmonar.q_out, R_Arterias_Pulmonares.q_in) annotation(
           Line(points = {{-171, 166}, {-143.5, 166}, {-143.5, 190}}, thickness = 0.75, arrow = {Arrow.None, Arrow.Open}));
+  connect(altitud1.P_partial_O2, pO2_altitude.P_Con_O2) annotation(
+          Line(points = {{-90, 260}, {-76, 260}, {-76, 263}, {-60, 263}, {-60, 266}}, color = {0, 85, 0}));
+  connect(Pulmonary_arteries.O2_current, pO2_altitude.O2_PA) annotation(
+          Line(points = {{-82, 234}, {-60, 234}, {-60, 258}}, color = {85, 255, 0}));
+  connect(pO2_altitude.O2_inPAB, R_Vasos_perifericos_pulmonares.oxygen) annotation(
+          Line(points = {{-40, 262}, {0, 262}, {0, 240}}, color = {85, 255, 0}));
         annotation(
           Diagram(coordinateSystem(extent = {{-260, -330}, {260, 290}}, preserveAspectRatio = false)),
           Icon(coordinateSystem(extent = {{-260, -330}, {260, 290}}, preserveAspectRatio = false)),
@@ -4401,7 +4401,7 @@ This package contains all the components for the construction of multiple physio
         parameter Modelica.SIunits.MassConcentration Conc_Hb_fetal = 175 "Concentration of Hb in blood in [mol Hb/l]";
         Modelica.SIunits.Concentration O2_Hb_fetal "Concentration carried by hemoglobin";
         Modelica.SIunits.Concentration O2_i "Uterine oxygen concentration";
-        parameter Real Tao = 24 "Pulmonary establishment time, typically 24 hours";
+        parameter Real Tau_s = 24 "Pulmonary establishment time, typically 24 hours";
         //---------------------------------
         //---Auxiliary variables----------
         //---------------------------------
@@ -4422,38 +4422,36 @@ This package contains all the components for the construction of multiple physio
         parameter Modelica.SIunits.Time t0 = 0 "time of birth";
       
       equation
-        //---------------------------------
-        //---Ventilation-Perfusion Ratio---
-        //---------------------------------
-        // t in minutes
-        if 0 <= time and time <= t0 then
-          r = 0;
-        elseif t0 < time and time <= (t0 + (Tao*3600)) then
-          r = 0.7*(((time/60) - (t0/60))/(Tao/60));
+//---------------------------------
+//---Ventilation-Perfusion Ratio---
+//---------------------------------
+// t in hours
+        if time <= 3600*Tau_s then
+          r = 0.7*time/(3600*Tau_s); 
         else
           r = 0.7;
         end if;
-        //---------------------------------
-        //---Maximum concentration---------
-        //---------------------------------
+//---------------------------------
+//---Maximum concentration---------
+//---------------------------------
         O2_Hb_fetal = Conc_Hb_fetal*1340*(1/(1000*22.4));
-        //-----------------------------------------
-        //---Inspired concentration [O2]_{i}-------
-        //-----------------------------------------
+//-----------------------------------------
+//---Inspired concentration [O2]_{i}-------
+//-----------------------------------------
         O2_i = P_Con_O2/(K*T);
-        //---------------------------------
-        //---Hill Function-----------------
-        //---------------------------------
+//---------------------------------
+//---Hill Function-----------------
+//---------------------------------
         a = 0;
         b = (O2_Hb_fetal - O2_PA)*0.99;
-        //is that it is the oxygen concentration in blood that is
-        //allowed to equilibrate directly with the inspired air,without
-        //the intervention of the lungs
-        //---------------------------------
-        //----O2 concentration intake------
-        //----of the blood passing the-----
-        //----pulmonary arterial bed-------
-        //---------------------------------
+//is that it is the oxygen concentration in blood that is
+//allowed to equilibrate directly with the inspired air,without
+//the intervention of the lungs
+//---------------------------------
+//----O2 concentration intake------
+//----of the blood passing the-----
+//----pulmonary arterial bed-------
+//---------------------------------
         O2_inPAB = Modelica.Math.Nonlinear.solveOneNonlinearEquation(function Functions.Pulmonary_function(r = r, O2_i = O2_i, Gamma = Gamma, O2_PA = O2_PA, O2_Hb_fetal = O2_Hb_fetal, PO2_50 = PO2_50, T = T, K = K), a, b, tolerance);
         annotation(
           Icon(coordinateSystem(preserveAspectRatio = false, initialScale = 0.1), graphics = {Rectangle(lineColor = {0, 0, 255}, fillColor = {0, 255, 0}, fillPattern = FillPattern.Solid, extent = {{-80, 80}, {80, -80}}), Line(points = {{-78, 0}, {-68, 18}, {-54, 52}, {-44, 64}, {-30, 60}, {-26, 46}}), Line(points = {{-26, 46}, {-26, 32}, {-20, 10}, {-8, 2}, {36, 2}, {80, 2}}), Text(lineColor = {0, 0, 255}, extent = {{-70, 98}, {-22, 80}}, textString = "HR"), Text(lineColor = {0, 0, 255}, extent = {{-74, -40}, {40, -80}}, textString = "Et"), Text(lineColor = {0, 0, 255}, extent = {{42, -40}, {100, -80}}, textString = "Pi"), Text(origin = {-10, 166}, lineColor = {0, 0, 255}, extent = {{-272, 16}, {276, -40}}, textString = "%name")}),
@@ -4513,30 +4511,30 @@ This package contains all the components for the construction of multiple physio
         Connectors.VolumeFlowRateInput Q_PLAC annotation(
           Placement(visible = true, transformation(origin = {100, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 180), iconTransformation(origin = {-96, -60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
       equation
-        //---------------------------------
-        //------Maximum concentration------
-        //---------------------------------
+//---------------------------------
+//------Maximum concentration------
+//---------------------------------
                 O2_Hb_fetal = Conc_Hb_fetal*1340*(1/(1000*22.4));
                 O2_Hb_placental = Conc_Hb_placental*1340*(1/(1000*22.4));
-        //---------------------------------
-        //-----Uterine O2 concentration----
-        //---------------------------------
+//---------------------------------
+//-----Uterine O2 concentration----
+//---------------------------------
                 O2_U = Functions.H_1(O2_Hb_placental, P_Con_O2, PO2_50);
-        //---------------------------------
-        //---Ventilation-Perfusion Ratio---
-        //---------------------------------
+//---------------------------------
+//---Ventilation-Perfusion Ratio---
+//---------------------------------
                 r = 1e-5/Q_PLAC;
-        //---------------------------------
-        //----Integration method limits----
-        //---------------------------------
-        //lower limit of the bisection method
+//---------------------------------
+//----Integration method limits----
+//---------------------------------
+//lower limit of the bisection method
                 a = 0;
-        //upper limit of the bisection method
+//upper limit of the bisection method
                 b = (O2_Hb_fetal - O2_PLAC)*0.99;
-        //---------------------------------
-        //------Oxygen that enters---------
-        //----------the system-------------
-        //---------------------------------
+//---------------------------------
+//------Oxygen that enters---------
+//----------the system-------------
+//---------------------------------
         O2_inPB = Modelica.Math.Nonlinear.solveOneNonlinearEquation(function Functions.Placental_function(r = r, O2_U = O2_U, Gamma = Gamma, O2_PLAC = O2_PLAC, O2_Hb_fetal = O2_Hb_fetal, O2_Hb_placental = O2_Hb_placental, PO2_50 = PO2_50), a, b, tolerance);
         annotation(
           Icon(coordinateSystem(preserveAspectRatio = false, initialScale = 0.1), graphics = {Rectangle(lineColor = {0, 0, 255}, fillColor = {0, 255, 0}, fillPattern = FillPattern.Solid, extent = {{-80, 80}, {80, -80}}), Line(points = {{-78, 0}, {-68, 18}, {-54, 52}, {-44, 64}, {-30, 60}, {-26, 46}}), Line(points = {{-26, 46}, {-26, 32}, {-20, 10}, {-8, 2}, {36, 2}, {80, 2}}), Text(origin = {-44, -164}, lineColor = {0, 0, 255}, extent = {{-70, 98}, {-22, 80}}, textString = "HR"), Text(lineColor = {0, 0, 255}, extent = {{-74, -40}, {40, -80}}, textString = "Et"), Text(lineColor = {0, 0, 255}, extent = {{42, -40}, {100, -80}}, textString = "Pi"), Text(origin = {-6, 122}, lineColor = {0, 0, 255}, extent = {{-272, 16}, {276, -40}}, textString = "%name")}),
@@ -4586,13 +4584,13 @@ This package contains all the components for the construction of multiple physio
         Types.Concentration O2_i "Temperature";
         Real r, K, Tao, a, b, H_PAB, H_PA;
       equation
-        //---------------------------------
-        //----Inspired O2 concentration----
-        //---------------------------------
+//---------------------------------
+//----Inspired O2 concentration----
+//---------------------------------
                 O2_i = (P_Con_O2)/(K*T);
-        //---------------------------------
-        //---Ventilation-Perfusion Ratio---
-        //---------------------------------
+//---------------------------------
+//---Ventilation-Perfusion Ratio---
+//---------------------------------
         tm = time - t0;
         Tao = 1;
         if 0 < tm and tm <= t0 then
@@ -4602,9 +4600,9 @@ This package contains all the components for the construction of multiple physio
         else
           r = 0.7;
         end if;
-        //---------------------------------
-        //----------Hill Function----------
-        //---------------------------------
+//---------------------------------
+//----------Hill Function----------
+//---------------------------------
         H_PAB = Functions.H(Conc_Hb, O2_inPAB, PO2_50);
         H_PA = Functions.H(Conc_Hb, O2_PA, PO2_50);
 
@@ -4665,18 +4663,18 @@ This package contains all the components for the construction of multiple physio
         Real r, Tao, a, b, H_PB_PLAC, H_PLAC, H_M;
         constant Real K = 0.082;
       equation
-        //---------------------------------
-        //----Inspired O2 concentration----
-        //---------------------------------
+//---------------------------------
+//----Inspired O2 concentration----
+//---------------------------------
         O2_u = (P_Con_O2)*(1/H_M);
-        //---------------------------------
-        //---Ventilation-Perfusion Ratio---
-        //---------------------------------
+//---------------------------------
+//---Ventilation-Perfusion Ratio---
+//---------------------------------
         Tao = 600;
         r = 600/Q_PLAC;
-        //---------------------------------
-        //----------Hill Function----------
-        //---------------------------------
+//---------------------------------
+//----------Hill Function----------
+//---------------------------------
         H_PB_PLAC = H(Conc_Hb, (O2_inPB + O2_PLAC), PO2_50);
         H_PLAC = H(Conc_Hb, O2_PLAC, PO2_50);
         H_M = H(Conc_Hb, O2_u, PO2_50);
@@ -4739,15 +4737,15 @@ This package contains all the components for the construction of multiple physio
         Real H_PAB, H_PA;
         //Variables for Hill function
       equation
-        //---------------------------------
-        //----Inspired O2 concentration----
-        //---------------------------------
+//---------------------------------
+//----Inspired O2 concentration----
+//---------------------------------
         O2_i = (P_Con_O2)/(K*T);
-        //---------------------------------
-        //---Ventilation-Perfusion Ratio---
-        //---------------------------------
+//---------------------------------
+//---Ventilation-Perfusion Ratio---
+//---------------------------------
         Tao = 10*60;
-        // 10 minutes
+// 10 minutes
         if time <= t0 then
           r = 0;
         elseif t0 < time and time <= t0 + Tao then
@@ -4755,17 +4753,17 @@ This package contains all the components for the construction of multiple physio
         else
           r = 0.7;
         end if;
-        //---------------------------------
-        //----------Hill Function----------
-        //---------------------------------
+//---------------------------------
+//----------Hill Function----------
+//---------------------------------
         O_AB = O2_PA + O2_inPAB;
-        //Oxygen concentration after inspiring
+//Oxygen concentration after inspiring
         H_PAB = H(Conc_Hb, O_AB, PO2_50);
         H_PA = H(Conc_Hb, O2_PA, PO2_50);
-        //---------------------------------
-        //------Oxygen that enters---------
-        //----------the system-------------
-        //---------------------------------
+//---------------------------------
+//------Oxygen that enters---------
+//----------the system-------------
+//---------------------------------
         O2_inPAB = (r*O2_i) - (r*(H_PAB/(Gamma_PAB*K*T))) + r*(((1 - Gamma_PAB)*H_PA)/(Gamma_PAB*K*T));
         annotation(
           Icon(coordinateSystem(preserveAspectRatio = false, initialScale = 0.1), graphics = {Rectangle(lineColor = {0, 0, 255}, fillColor = {0, 255, 0}, fillPattern = FillPattern.Solid, extent = {{-80, 80}, {80, -80}}), Line(points = {{-78, 0}, {-68, 18}, {-54, 52}, {-44, 64}, {-30, 60}, {-26, 46}}), Line(points = {{-26, 46}, {-26, 32}, {-20, 10}, {-8, 2}, {36, 2}, {80, 2}}), Text(lineColor = {0, 0, 255}, extent = {{-70, 98}, {-22, 80}}, textString = "HR"), Text(lineColor = {0, 0, 255}, extent = {{-74, -40}, {40, -80}}, textString = "Et"), Text(lineColor = {0, 0, 255}, extent = {{42, -40}, {100, -80}}, textString = "Pi"), Text(lineColor = {0, 0, 255}, extent = {{-272, 16}, {276, -40}}, textString = "%name")}),
@@ -4817,26 +4815,26 @@ This package contains all the components for the construction of multiple physio
         Connectors.VolumeFlowRateInput Q_PLAC(start = 1e-12) annotation(
           Placement(visible = true, transformation(origin = {100, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 180), iconTransformation(origin = {-90, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
       equation
-        //---------------------------------
-        //----Inspired O2 concentration----
-        //---------------------------------
+//---------------------------------
+//----Inspired O2 concentration----
+//---------------------------------
         O2_u = (P_Con_O2)*(1/H_M);
-        //---------------------------------
-        //---Ventilation-Perfusion Ratio---
-        //---------------------------------
+//---------------------------------
+//---Ventilation-Perfusion Ratio---
+//---------------------------------
         r = 600/Q_PLAC;
-        //---------------------------------
-        //----------Hill Function----------
-        //---------------------------------
+//---------------------------------
+//----------Hill Function----------
+//---------------------------------
         O_PB_PLAC = O2_inPB + O2_PLAC;
-        //Oxygen concentration after inspiring
+//Oxygen concentration after inspiring
         H_PB_PLAC = H(Conc_Hb, O_PB_PLAC, PO2_50);
         H_PLAC = H(Conc_Hb, O2_PLAC, PO2_50);
         H_M = H(Conc_Hb, O2_u, PO2_50);
-        //---------------------------------
-        //------Oxygen that enters---------
-        //----------the system-------------
-        //---------------------------------
+//---------------------------------
+//------Oxygen that enters---------
+//----------the system-------------
+//---------------------------------
         O2_inPB = (r*O2_u) - (r*(1/H_M)*((H_PB_PLAC/(Gamma_PAB)) + ((1 - Gamma_PAB)*H_PLAC/(Gamma_PAB))));
         annotation(
           Icon(coordinateSystem(preserveAspectRatio = false, initialScale = 0.1), graphics = {Rectangle(lineColor = {0, 0, 255}, fillColor = {0, 255, 0}, fillPattern = FillPattern.Solid, extent = {{-80, 80}, {80, -80}}), Line(points = {{-78, 0}, {-68, 18}, {-54, 52}, {-44, 64}, {-30, 60}, {-26, 46}}), Line(points = {{-26, 46}, {-26, 32}, {-20, 10}, {-8, 2}, {36, 2}, {80, 2}}), Text(lineColor = {0, 0, 255}, extent = {{-70, 98}, {-22, 80}}, textString = "HR"), Text(lineColor = {0, 0, 255}, extent = {{-74, -40}, {40, -80}}, textString = "Et"), Text(lineColor = {0, 0, 255}, extent = {{42, -40}, {100, -80}}, textString = "Pi"), Text(lineColor = {0, 0, 255}, extent = {{-272, 16}, {276, -40}}, textString = "%name")}),
@@ -4898,9 +4896,9 @@ This package contains all the components for the construction of multiple physio
         Connectors.OxygenFlowInput O2_PA annotation(
           Placement(visible = true, transformation(origin = {-120, 32}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-40, -102}, extent = {{-20, -20}, {20, 20}}, rotation = 90)));
       equation
-        //---------------------------------
-        //---Ventilation-Perfusion Ratio---
-        //---------------------------------
+//---------------------------------
+//---Ventilation-Perfusion Ratio---
+//---------------------------------
         Tao = 10*60;
         if 0 < time and time <= t0 then
           r = 0;
@@ -4909,26 +4907,26 @@ This package contains all the components for the construction of multiple physio
         else
           r = 0.7;
         end if;
-        ////---------------------------------------
-        ////----Inspired concentration [O2]_{i}----
-        ////---------------------------------------
+////---------------------------------------
+////----Inspired concentration [O2]_{i}----
+////---------------------------------------
         O2_i = P_Con_O2/(K*T);
-        ////---------------------------------
-        ////----------Hill Function----------
+////---------------------------------
+////----------Hill Function----------
         O2_Hb = (Conc_Hb*1.34)/(22.4*0.1);
         O2_combi = O2_PA + O2_inPAB;
         H_O2_PA_PAB = PO2_50*((O2_combi)/((O2_Hb) - (O2_combi)))^(1/2.7);
         H_O2_PA = PO2_50*((O2_PA)/((O2_Hb) - (O2_PA)))^(1/2.7);
-        //---------------------------------
-        //----------Ideal gas law----------
-        //---------------------------------
+//---------------------------------
+//----------Ideal gas law----------
+//---------------------------------
         PO2_PAB = (O2_inPAB*K*T);
         PO2_PA = (O2_PA*K*T);
-        ////---------------------------------
-        ////----O2 concentration intake------
-        ////----of the blood passing the-----
-        ////----pulmonary arterial bed-------
-        ////---------------------------------
+////---------------------------------
+////----O2 concentration intake------
+////----of the blood passing the-----
+////----pulmonary arterial bed-------
+////---------------------------------
         a = O2_i;
         b = ((H_O2_PA_PAB)/(Gamma*K*T));
         c = ((1 - Gamma)*H_O2_PA)/(Gamma*K*T);
@@ -4984,26 +4982,26 @@ This package contains all the components for the construction of multiple physio
         Connectors.VolumeFlowRateInput Q_PLAC(start = 1e-12) annotation(
           Placement(visible = true, transformation(origin = {100, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 180), iconTransformation(origin = {-90, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
       equation
-        //---------------------------------
-        //----Inspired O2 concentration----
-        //---------------------------------
+//---------------------------------
+//----Inspired O2 concentration----
+//---------------------------------
         O2_u = (P_Con_O2)*(1/H_M);
-        //---------------------------------
-        //---Ventilation-Perfusion Ratio---
-        //---------------------------------
+//---------------------------------
+//---Ventilation-Perfusion Ratio---
+//---------------------------------
         r = 600/Q_PLAC;
-        //---------------------------------
-        //----------Hill Function----------
-        //---------------------------------
+//---------------------------------
+//----------Hill Function----------
+//---------------------------------
         O_PB_PLAC = O2_inPB + O2_PLAC;
-        //Oxygen concentration after inspiring
+//Oxygen concentration after inspiring
         H_PB_PLAC = Functions.H(Conc_Hb, O_PB_PLAC, PO2_50);
         H_PLAC = Functions.H(Conc_Hb, O2_PLAC, PO2_50);
         H_M = Functions.H(Conc_Hb, O2_u, PO2_50);
-        //---------------------------------
-        //------Oxygen that enters---------
-        //----------the system-------------
-        //---------------------------------
+//---------------------------------
+//------Oxygen that enters---------
+//----------the system-------------
+//---------------------------------
         O2_inPB = (r*O2_u) - (r*(1/H_M)*((H_PB_PLAC/(Gamma_PAB)) + ((1 - Gamma_PAB)*H_PLAC/(Gamma_PAB))));
         annotation(
           Icon(coordinateSystem(preserveAspectRatio = false, initialScale = 0.1), graphics = {Rectangle(lineColor = {0, 0, 255}, fillColor = {0, 255, 0}, fillPattern = FillPattern.Solid, extent = {{-80, 80}, {80, -80}}), Line(points = {{-78, 0}, {-68, 18}, {-54, 52}, {-44, 64}, {-30, 60}, {-26, 46}}), Line(points = {{-26, 46}, {-26, 32}, {-20, 10}, {-8, 2}, {36, 2}, {80, 2}}), Text(lineColor = {0, 0, 255}, extent = {{-70, 98}, {-22, 80}}, textString = "HR"), Text(lineColor = {0, 0, 255}, extent = {{-74, -40}, {40, -80}}, textString = "Et"), Text(lineColor = {0, 0, 255}, extent = {{42, -40}, {100, -80}}, textString = "Pi"), Text(lineColor = {0, 0, 255}, extent = {{-272, 16}, {276, -40}}, textString = "%name")}),
@@ -5043,7 +5041,7 @@ This package contains all the components for the construction of multiple physio
         parameter Modelica.SIunits.Temperature T = 298.15 "Body temperature";
         final constant Real K(final unit = "(m3*Pa)/(mol.K)") = 8.3144598 "Molar gas constant";
         Real tolerance = 100*Modelica.Constants.eps;
-        parameter Real Tao = 24 "Pulmonary establishment time, typically 24 hours";
+        parameter Real Tau_s = 24 "Pulmonary establishment time, typically 24 hours";
         //---------------------------------
         //---Concentrations---------------
         //---------------------------------
@@ -5071,38 +5069,36 @@ This package contains all the components for the construction of multiple physio
         parameter Modelica.SIunits.Time t0 = 0 "time of birth";
       
       equation
-        //---------------------------------
-        //---Ventilation-Perfusion Ratio---
-        //---------------------------------
-        // t in minutes
-        if 0 <= time and time <= t0 then
-          r = 0;
-        elseif t0 < time and time <= (t0 + (Tao*3600)) then
-          r = 0.7*(((time/60) - (t0/60))/(Tao/60));
+//---------------------------------
+//---Ventilation-Perfusion Ratio---
+//---------------------------------
+      // time in hours
+        if time <= 3600*Tau_s then
+          r = 0.7*time/(3600*Tau_s); 
         else
           r = 0.7;
         end if;
-        //---------------------------------
-        //---Maximum concentration---------
-        //---------------------------------
+//---------------------------------
+//---Maximum concentration---------
+//---------------------------------
         O2_Hb_fetal = Conc_Hb_fetal*1340*(1/(1000*22.4));
-        //-----------------------------------------
-        //---Inspired concentration [O2]_{i}-------
-        //-----------------------------------------
+//-----------------------------------------
+//---Inspired concentration [O2]_{i}-------
+//-----------------------------------------
         O2_i = P_Con_O2/(K*T);
-        //---------------------------------
-        //---Hill Function-----------------
-        //---------------------------------
+//---------------------------------
+//---Hill Function-----------------
+//---------------------------------
         a = 0;
         b = (O2_Hb_fetal - O2_PA)*0.99;
-        //is that it is the oxygen concentration in blood that is
-        //allowed to equilibrate directly with the inspired air,without
-        //the intervention of the lungs
-        //---------------------------------
-        //----O2 concentration intake------
-        //----of the blood passing the-----
-        //----pulmonary arterial bed-------
-        //---------------------------------
+//is that it is the oxygen concentration in blood that is
+//allowed to equilibrate directly with the inspired air,without
+//the intervention of the lungs
+//---------------------------------
+//----O2 concentration intake------
+//----of the blood passing the-----
+//----pulmonary arterial bed-------
+//---------------------------------
         O2_inPAB = Modelica.Math.Nonlinear.solveOneNonlinearEquation(function Functions.Pulmonary_function(r = r, O2_i = O2_i, Gamma = Gamma, O2_PA = O2_PA, O2_Hb_fetal = O2_Hb_fetal, PO2_50 = PO2_50, T = T, K = K), a, b, tolerance);
         annotation(
           Icon(coordinateSystem(preserveAspectRatio = false, initialScale = 0.1), graphics = {Rectangle(lineColor = {0, 0, 255}, fillColor = {0, 255, 0}, fillPattern = FillPattern.Solid, extent = {{-80, 80}, {80, -80}}), Line(points = {{-78, 0}, {-68, 18}, {-54, 52}, {-44, 64}, {-30, 60}, {-26, 46}}), Line(points = {{-26, 46}, {-26, 32}, {-20, 10}, {-8, 2}, {36, 2}, {80, 2}}), Text(lineColor = {0, 0, 255}, extent = {{-70, 98}, {-22, 80}}, textString = "HR"), Text(lineColor = {0, 0, 255}, extent = {{-74, -40}, {40, -80}}, textString = "Et"), Text(lineColor = {0, 0, 255}, extent = {{42, -40}, {100, -80}}, textString = "Pi"), Text(origin = {-8, 166}, lineColor = {0, 0, 255}, extent = {{-272, 16}, {276, -40}}, textString = "%name")}),
