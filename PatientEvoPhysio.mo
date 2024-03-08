@@ -472,6 +472,7 @@ model Constante_Elastance
   Real flujo;
   Modelica.SIunits.AmountOfSubstance solute;
   Types.Time tiempo_normalizado;
+  Types.Volume evolution;
 protected
   Types.Volume zpv;
   Types.Compliance c;
@@ -487,6 +488,8 @@ equation
   if not useExternalPressureInput then
     ep = ExternalPressure;
   end if;
+  
+  evolution = if volume_start - volume < 0 then 0 else volume_start - volume;
   excessVolume = max(0, volume - zpv);
   q_in.pressure = smooth(0, if noEvent(volume > CollapsingPressureVolume) then excessVolume/c + ep else a*log(max(Modelica.Constants.eps, volume/CollapsingPressureVolume)) + ep);
   state = volume;
