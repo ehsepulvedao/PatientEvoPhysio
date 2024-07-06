@@ -2310,7 +2310,7 @@ This package contains all the components for the construction of multiple physio
           Placement(visible = true, transformation(origin = {217, 23}, extent = {{-15, -15}, {15, 15}}, rotation = 90)));
         Components.Vascular_Resistance Resistor_Mitral(Conductance(displayUnit = "m3/(Pa.s)") = 2.08e-09, useConductanceInput = true) annotation(
           Placement(visible = true, transformation(origin = {213, 63}, extent = {{-15, -15}, {15, 15}}, rotation = -90)));
-        Components.Heart_Valve Valvula_Aortica(_Gon(displayUnit = "ml/(mmHg.min)") = 6.945014591163489e-09, useLimitationInputs = false) annotation(
+        Components.Heart_Valve Valvula_Aortica(_Gon(displayUnit = "m3/(Pa.s)") = 4.17e-7, useLimitationInputs = false) annotation(
           Placement(visible = true, transformation(origin = {225, -37}, extent = {{-15, -15}, {15, 15}}, rotation = -90)));
         Components.Constante_Elastance Intrathoracic_arteries(Compliance(displayUnit = "m3/Pa") = 9.74998e-10, ExternalPressure(displayUnit = "mmHg") = 0, Consumo(displayUnit = "mol/s"), ZeroPressureVolume = 6.86e-06, volume_start = 9.2333e-06) annotation(
           Placement(visible = true, transformation(origin = {187, -141}, extent = {{-15, -15}, {15, 15}}, rotation = 0)));
@@ -2324,7 +2324,7 @@ This package contains all the components for the construction of multiple physio
           Placement(visible = true, transformation(origin = {-217, -1}, extent = {{-15, -15}, {15, 15}}, rotation = 90)));
         Components.Time_Variant_Elastance Right_ventricle(Compliance(displayUnit = "m3/Pa"), ExternalPressure(displayUnit = "mmHg") = 0, ZeroPressureVolume = 0, useComplianceInput = true, useExternalPressureInput = false, volume_start = 1.68658e-06) annotation(
           Placement(visible = true, transformation(origin = {-203, 103}, extent = {{-15, -15}, {15, 15}}, rotation = -90)));
-        Components.Vascular_Resistance Resistor_Tricuspide(Conductance(displayUnit = "m3/(Pa.s)") = 3.13e-07, useConductanceInput = false) annotation(
+        Components.Vascular_Resistance Resistor_Tricuspide(Conductance(displayUnit = "m3/(Pa.s)") = 3.125e-7, useConductanceInput = false) annotation(
           Placement(visible = true, transformation(origin = {-219, 49}, extent = {{-15, -15}, {15, 15}}, rotation = 90)));
         Components.Heart_Valve Valvula_pulmonar(_Gon(displayUnit = "m3/(Pa.s)") = 4.17e-07, useLimitationInputs = false) annotation(
           Placement(visible = true, transformation(origin = {-171, 151}, extent = {{-15, -15}, {15, 15}}, rotation = 90)));
@@ -2348,13 +2348,13 @@ This package contains all the components for the construction of multiple physio
           Placement(visible = true, transformation(origin = {-211, -49}, extent = {{-15, -15}, {15, 15}}, rotation = -90)));
         Components.Blood_Inertia pulmonaryArterialInertia(I = 2.67e05, volumeFlow_start = 2.16667e-05) annotation(
           Placement(visible = true, transformation(origin = {152, -180}, extent = {{15, -15}, {-15, 15}}, rotation = 0)));
-        Signals.Ventricular_Elastances.Ventricular_signal_2 elas_Ventri_Neonato1(ELVMAX(displayUnit = "Pa/m3") = 2.4e09, ELVMIN(displayUnit = "Pa/m3") = 4.32e07, HR = 2.46667) annotation(
+        Signals.Ventricular_Elastances.Ventricular_signal_2 elas_Ventri_Neonato1(ELVMAX(displayUnit = "Pa/m3") = 6.315e8, ELVMIN(displayUnit = "Pa/m3") = 6.251e6, HR = 2.46667) annotation(
           Placement(visible = true, transformation(origin = {-234, 102}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
-        Signals.Ventricular_Elastances.Ventricular_signal_2 elas_Ventri_Neonato2(ELVMAX(displayUnit = "Pa/m3") = 2.4e09, ELVMIN(displayUnit = "Pa/m3") = 4.32e07, HR = 2.46667) annotation(
+        Signals.Ventricular_Elastances.Ventricular_signal_2 elas_Ventri_Neonato2(ELVMAX(displayUnit = "Pa/m3") = 6.315e8, ELVMIN(displayUnit = "Pa/m3") = 6.251e6, HR = 2.46667) annotation(
           Placement(visible = true, transformation(origin = {190, 22}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
-        Signals.Atrial_Elastances.Atrial_signal_2 elas_Auri_Neonato1(ELAMAX = 1.33e08, ELAMIN = 4.40e07, HR = 2.46667) annotation(
+        Signals.Atrial_Elastances.Atrial_signal_2 elas_Auri_Neonato1(ELAMAX (displayUnit = "Pa/m3")= 2.273e8, ELAMIN (displayUnit = "Pa/m3")= 7.501e7, HR = 2.46667) annotation(
           Placement(visible = true, transformation(origin = {-242, -50}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
-        Signals.Atrial_Elastances.Atrial_signal_2 elas_Auri_Neonato2(ELAMAX(displayUnit = "Pa/m3") = 1.33e08, ELAMIN(displayUnit = "Pa/m3") = 4.40e07, HR = 2.46667) annotation(
+        Signals.Atrial_Elastances.Atrial_signal_2 elas_Auri_Neonato2(ELAMAX(displayUnit = "Pa/m3") = 2.273e8, ELAMIN(displayUnit = "Pa/m3") = 7.501e7, HR = 2.46667) annotation(
           Placement(visible = true, transformation(origin = {132, 166}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
         Components.Vascular_Resistance Arteria_umbilical(Conductance(displayUnit = "m3/(Pa.s)") = 2.36001e-09, useConductanceInput = true) annotation(
           Placement(visible = true, transformation(origin = {23, -273}, extent = {{-15, -15}, {15, 15}}, rotation = 180)));
@@ -2382,13 +2382,13 @@ This package contains all the components for the construction of multiple physio
           Placement(visible = true, transformation(origin = {236, 62}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
         Signals.Respirations.Placental_Respiration placental_Respiration1 annotation(
           Placement(visible = true, transformation(origin = {-126, -236}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-        Signals.Clamping.UCC_resistance resis_Siste_pinza1(Co = 1.625133414332255e-11, Cf = 1.625133414332256e-19, tc = 600, to = 1) annotation(
+        Signals.Clamping.UCC_resistance resis_Siste_pinza1(Co (displayUnit = "m3/(Pa.s)")= 1.374e-8, Cf (displayUnit = "m3/(Pa.s)")= 1.6251334143322553e-19, tc = 600, to = 1) annotation(
           Placement(visible = true, transformation(origin = {-126, -294}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
-        Signals.Clamping.UCC_resistance resis_Siste_pinza2(Cf= 1.250102626409427e-19, Co= 1.250102626409427e-11, tc = 600, to = 1) annotation(
+        Signals.Clamping.UCC_resistance resis_Siste_pinza2(Cf(displayUnit = "m3/(Pa.s)")= 1.2501026264094272e-19, Co(displayUnit = "m3/(Pa.s)")= 2.359e-9, tc = 600, to = 1) annotation(
           Placement(transformation(origin = {24, -300}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
         Components.Altitude altitud1(H = 0)  annotation(
           Placement(visible = true, transformation(origin = {-102, 260}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Signals.Respirations.PO2_altitude pO2_altitude annotation(
+      Signals.Respirations.PO2_altitude pO2_altitude annotation(
           Placement(transformation(origin = {-50, 262}, extent = {{-10, -10}, {10, 10}})));
       equation
         connect(resis_Siste_pinza2.C, Arteria_umbilical.cond) annotation(
@@ -2489,11 +2489,11 @@ This package contains all the components for the construction of multiple physio
           Line(points = {{-216, 14}, {-218, 14}, {-218, 34}, {-218, 34}}, thickness = 0.75, arrow = {Arrow.None, Arrow.Open}));
         connect(Valvula_pulmonar.q_out, R_Arterias_Pulmonares.q_in) annotation(
           Line(points = {{-171, 166}, {-143.5, 166}, {-143.5, 190}}, thickness = 0.75, arrow = {Arrow.None, Arrow.Open}));
-  connect(altitud1.P_partial_O2, pO2_altitude.P_Con_O2) annotation(
+      connect(altitud1.P_partial_O2, pO2_altitude.P_Con_O2) annotation(
           Line(points = {{-90, 260}, {-76, 260}, {-76, 263}, {-60, 263}, {-60, 266}}, color = {0, 85, 0}));
-  connect(Pulmonary_arteries.O2_current, pO2_altitude.O2_PA) annotation(
+      connect(Pulmonary_arteries.O2_current, pO2_altitude.O2_PA) annotation(
           Line(points = {{-82, 234}, {-60, 234}, {-60, 258}}, color = {85, 255, 0}));
-  connect(pO2_altitude.O2_inPAB, R_Vasos_perifericos_pulmonares.oxygen) annotation(
+      connect(pO2_altitude.O2_inPAB, R_Vasos_perifericos_pulmonares.oxygen) annotation(
           Line(points = {{-40, 262}, {0, 262}, {0, 240}}, color = {85, 255, 0}));
         annotation(
           Diagram(coordinateSystem(extent = {{-260, -330}, {260, 290}}, preserveAspectRatio = false)),
