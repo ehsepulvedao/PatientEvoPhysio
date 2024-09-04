@@ -2358,7 +2358,7 @@ This package contains all the components for the construction of multiple physio
           Placement(visible = true, transformation(origin = {132, 166}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
         Components.Vascular_Resistance Arteria_umbilical(Conductance(displayUnit = "m3/(Pa.s)") = 2.36001e-09, useConductanceInput = true) annotation(
           Placement(visible = true, transformation(origin = {23, -273}, extent = {{-15, -15}, {15, 15}}, rotation = 180)));
-        Components.Constante_Elastance Placenta(Compliance= 2.5e-09, Conc_Hb = 120, SO2 = 43.2, ZeroPressureVolume = 6e-05, volume_start = 0.000155) annotation(
+        Components.Constante_Elastance Placenta(Compliance= 2.5e-9, Conc_Hb = 120, SO2 = 43.2, ZeroPressureVolume = 6e-05, volume_start = 1.58e-4) annotation(
           Placement(visible = true, transformation(origin = {-45, -275}, extent = {{-15, -15}, {15, 15}}, rotation = 180)));
         Components.Vascular_Resistance Ducto_venoso(Conductance(displayUnit = "m3/(Pa.s)") = 1.37e-08, useConductanceInput = true, useOxygenInput = true) annotation(
           Placement(visible = true, transformation(origin = {-125, -265}, extent = {{-15, -15}, {15, 15}}, rotation = 180)));
@@ -2382,9 +2382,9 @@ This package contains all the components for the construction of multiple physio
           Placement(visible = true, transformation(origin = {236, 62}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
         Signals.Respirations.Placental_Respiration placental_Respiration1 annotation(
           Placement(visible = true, transformation(origin = {-126, -236}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-        Signals.Clamping.UCC_resistance resis_Siste_pinza1(Co (displayUnit = "m3/(Pa.s)")= 1.374e-8, Cf (displayUnit = "m3/(Pa.s)")= 1.6251334143322553e-19, tc = 600, to = 1) annotation(
-          Placement(visible = true, transformation(origin = {-126, -294}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
-        Signals.Clamping.UCC_resistance resis_Siste_pinza2(Cf(displayUnit = "m3/(Pa.s)")= 1.2501026264094272e-19, Co(displayUnit = "m3/(Pa.s)")= 2.359e-9, tc = 600, to = 1) annotation(
+        Signals.Clamping.UCC_resistance resis_Siste_pinza1(Co (displayUnit = "ml/(mmHg.min)")= 1.11259133750439e-11, Cf (displayUnit = "ml/(mmHg.min)")= 1.6251334143322553e-19, tc = 600, to = 1) annotation(
+          Placement(transformation(origin = {-124, -294}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
+        Signals.Clamping.UCC_resistance resis_Siste_pinza2(Cf(displayUnit = "ml/(mmHg.min)")= 1.2501026264094272e-19, Co(displayUnit = "ml/(mmHg.min)")= 1.2501026264094272e-11, tc = 600, to = 1) annotation(
           Placement(transformation(origin = {24, -300}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
         Components.Altitude altitud1(H = 0)  annotation(
           Placement(visible = true, transformation(origin = {-102, 260}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -2394,7 +2394,7 @@ This package contains all the components for the construction of multiple physio
         connect(resis_Siste_pinza2.C, Arteria_umbilical.cond) annotation(
           Line(points = {{24, -291}, {22, -291}, {22, -284}, {24, -284}}, color = {0, 0, 127}));
         connect(resis_Siste_pinza1.C, Ducto_venoso.cond) annotation(
-          Line(points = {{-126, -284}, {-126, -284}, {-126, -276}, {-124, -276}}, color = {0, 0, 127}));
+          Line(points = {{-124, -285}, {-124, -276}}, color = {0, 0, 127}));
         connect(placental_Respiration1.O2_inPB, Ducto_venoso.oxygen) annotation(
           Line(points = {{-126, -246}, {-126, -246}, {-126, -256}, {-124, -256}}, color = {0, 0, 127}));
         connect(placental_Respiration1.O2_PLAC, Placenta.O2_current) annotation(
@@ -5075,7 +5075,7 @@ This package contains all the components for the construction of multiple physio
 //---------------------------------
 //---Ventilation-Perfusion Ratio---
 //---------------------------------
-      // time in hours
+// time in hours
         if time <= 3600*Tau_s then
           r = 0.7*time/(3600*Tau_s); 
         else
