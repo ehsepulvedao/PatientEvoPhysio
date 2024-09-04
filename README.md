@@ -70,6 +70,8 @@ You may report any issues to the email ehsepulved@laas.fr or lbermeoc@unal.edu.c
 <p>Articles related to the data and models presented in this library are listed below. </p>
 <ol>
 <li>Sep&uacute;lveda-Oviedo EH, Bermeo Clavijo LE, M&eacute;ndez C&oacute;rdoba LC.
+Effect of timing of umbilical cord clamping and birth on fetal to neonatal transition: OpenModelica-based virtual simulator-based approach. Biocybernetics and Biomedical Engineering. 2024;44(3):716-730.</li> 
+<li>Sep&uacute;lveda-Oviedo EH, Bermeo Clavijo LE, M&eacute;ndez C&oacute;rdoba LC.
 OpenModelica-based virtual simulator for the cardiovascular and respiratory physiology of a neonate. Journal of Medical Engineering & Technology. 2022;46(3):179-97.</li>
 <li>Sepulveda-Oviedo, EH., Bermeo, L., y M&eacute;ndez, L. (2018). Desarrollo de una herramienta de simulaci&oacute;n cardiovascular neonatal para la enseñanza y la investigaci&oacute;n. XLVI Congresso Brasileiro de Educação em Engenharia (COBENGE) e no 1º Simp&oacute;sio Internacional de Educação em Engenharia da ABENGE, Salvador bahia, Brasil.</li>
 <li>Sep&uacute;lveda-Oviedo EH. Estudio de la pr&aacute;ctica del pinzamiento del cord&oacute;n umbilical usando an&aacute;lisis computacional de la informaci&oacute;n bibliogr&aacute;fica, modelos de eventos discretos y modelos din&aacute;micos [diploma thesis]. Universidad Nacional de Colombia; 2019.</li>
