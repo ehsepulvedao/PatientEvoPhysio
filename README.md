@@ -255,9 +255,9 @@ A machine-readable citation is provided in [`CITATION.cff`](CITATION.cff).
 
 PatientEvoPhysio was originally developed through the collaboration of the following authors and scientific contributors:
 
-- **Edgar Hernando Sepúlveda-Oviedo** — **original author, principal developer and scientific contributor**; current maintainer and release manager.
-- **Leonardo Enrique Bermeo Clavijo** — original scientific contributor and co-author.
-- **Luis Carlos Méndez-Córdoba** — original scientific contributor and co-author.
+- **Edgar Hernando Sepúlveda-Oviedo** — original author and scientific contributor.
+- **Leonardo Enrique Bermeo Clavijo** — original author and scientific contributor.
+- **Luis Carlos Méndez-Córdoba** — original author and scientific contributor.
 
 ### Current project maintenance
 
