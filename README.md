@@ -4,6 +4,8 @@
 
 ### Open-source Modelica library for human cardiovascular and respiratory physiology
 
+<img width="1672" height="941" alt="Evolución Cardiopulmonar en Modelica" src="https://github.com/user-attachments/assets/3855ae55-9f79-4431-a6bd-56a16354e3ed" />
+
 **From fetal life to adulthood — computational physiology in Modelica**
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10054996.svg)](https://doi.org/10.5281/zenodo.10054996)
@@ -72,9 +74,6 @@ The internal structure of PatientEvoPhysio is organized into **eight main packag
 ---
 
 ## 🖥️ Library overview
-
-
-<img width="1672" height="941" alt="Evolución Cardiopulmonar en Modelica" src="https://github.com/user-attachments/assets/3855ae55-9f79-4431-a6bd-56a16354e3ed" />
 
 PatientEvoPhysio follows a modular approach: physiological components can be interconnected through dedicated connectors to reproduce complex cardiovascular and respiratory systems while preserving physiological interpretability.
 
