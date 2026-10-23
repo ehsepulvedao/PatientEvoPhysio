@@ -37,7 +37,10 @@ package PatientEvoPhysio
 
     class Cardiovascular_System
       annotation(
-        Icon(graphics = {Bitmap(origin = {0, 1}, extent = {{-204, 87}, {204, -87}}, fileName = "modelica://PatientEvoPhysio/Resources/Images/icon/icons_cardiovascular_system.svg")}));
+        Icon(graphics = {Bitmap(
+          origin={0,0},
+          extent={{-200,200},{200,-200}},
+          fileName="modelica://PatientEvoPhysio/Resources/Images/icon/icons_cardiovascular_system.svg")}));
     end Cardiovascular_System;
 
     class Valve_2
