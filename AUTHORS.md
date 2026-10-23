@@ -4,9 +4,9 @@
 
 PatientEvoPhysio was originally developed through the collaboration of the following authors and scientific contributors:
 
-- **Edgar Hernando Sepúlveda-Oviedo** — **original author, principal developer and scientific contributor**; current maintainer and release manager.
-- **Leonardo Enrique Bermeo Clavijo** — original scientific contributor and co-author.
-- **Luis Carlos Méndez-Córdoba** — original scientific contributor and co-author.
+- **Edgar Hernando Sepúlveda-Oviedo** — original author and scientific contributor.
+- **Leonardo Enrique Bermeo Clavijo** — original author and scientific contributor.
+- **Luis Carlos Méndez-Córdoba** — original author and scientific contributor.
 
 This wording reflects both the original authorship of the project and the respective roles in its development. Edgar Hernando Sepúlveda-Oviedo led the implementation of the library and remains responsible for the current maintenance and release line.
 
