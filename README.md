@@ -73,7 +73,8 @@ The internal structure of PatientEvoPhysio is organized into **eight main packag
 
 ## 🖥️ Library overview
 
-![PatientEvoPhysio overview](https://github.com/ehsepulvedao/PatientEvoPhysio/assets/7245709/967f427d-3f07-4a28-b29f-1e0a24ae1af4)
+
+<img width="1672" height="941" alt="Evolución Cardiopulmonar en Modelica" src="https://github.com/user-attachments/assets/3855ae55-9f79-4431-a6bd-56a16354e3ed" />
 
 PatientEvoPhysio follows a modular approach: physiological components can be interconnected through dedicated connectors to reproduce complex cardiovascular and respiratory systems while preserving physiological interpretability.
 
