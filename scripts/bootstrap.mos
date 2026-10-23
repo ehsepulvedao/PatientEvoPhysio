@@ -1,0 +1,23 @@
+// PatientEvoPhysio v2 dependency bootstrap
+// Run from repository root: omc scripts/bootstrap.mos
+print("Updating OpenModelica package index...\n");
+updatePackageIndex();
+print(getErrorString());
+
+print("Installing Complex 3.2.3...\n");
+installPackage(Complex, "3.2.3", exactMatch=false);
+print(getErrorString());
+
+print("Installing ModelicaServices 3.2.3...\n");
+installPackage(ModelicaServices, "3.2.3", exactMatch=false);
+print(getErrorString());
+
+print("Installing Modelica 3.2.3...\n");
+installPackage(Modelica, "3.2.3", exactMatch=false);
+print(getErrorString());
+
+print("Installing Physiolibrary 2.3.1...\n");
+installPackage(Physiolibrary, "2.3.1", exactMatch=true);
+print(getErrorString());
+
+print("Dependency bootstrap completed. Restart OMEdit before loading PatientEvoPhysio.\n");

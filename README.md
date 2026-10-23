@@ -2,371 +2,297 @@
 
 # 🫀 PatientEvoPhysio
 
-### Open-source Modelica library for human cardiovascular and respiratory physiology
+### Open-source Modelica library for cardiovascular and respiratory computational physiology
 
-<img width="1672" height="941" alt="Evolución Cardiopulmonar en Modelica" src="https://github.com/user-attachments/assets/3855ae55-9f79-4431-a6bd-56a16354e3ed" />
+<img src="docs/assets/PatientEvoPhysio_banner.png" alt="PatientEvoPhysio — computational physiology from fetal life to adulthood" width="100%">
 
-**From fetal life to adulthood — computational physiology in Modelica**
+**From fetal life to adulthood — interpretable computational physiology in Modelica**
 
+[![Release](https://img.shields.io/badge/release-v2.0.0-0ea5e9)](RELEASE_NOTES.md)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10054996.svg)](https://doi.org/10.5281/zenodo.10054996)
 ![Modelica](https://img.shields.io/badge/Modelica-3.2.3-blue)
 ![Physiolibrary](https://img.shields.io/badge/Physiolibrary-2.3.1-green)
+![OpenModelica](https://img.shields.io/badge/validated%20with-OpenModelica%201.27.1-1f6feb)
+![Scenarios](https://img.shields.io/badge/canonical%20scenarios-10-8b5cf6)
 ![License](https://img.shields.io/badge/License-CC0%201.0-lightgrey)
-![GitHub last commit](https://img.shields.io/github/last-commit/ehsepulvedao/PatientEvoPhysio)
+[![Python checks](https://github.com/ehsepulvedao/PatientEvoPhysio/actions/workflows/python-checks.yml/badge.svg)](https://github.com/ehsepulvedao/PatientEvoPhysio/actions/workflows/python-checks.yml)
 
 </div>
 
 ---
 
-## 🧬 About PatientEvoPhysio
+## What is PatientEvoPhysio?
 
-**PatientEvoPhysio** is an open-source Modelica library designed to simulate and study human **cardiovascular and respiratory physiology across different stages of life**, from fetal and neonatal life to childhood and adulthood.
+**PatientEvoPhysio** is an open-source Modelica library for mechanistic simulation of human cardiovascular and respiratory physiology across the life cycle. It combines reusable physiological components with complete scenarios spanning **fetal life, neonatal transition, childhood and adulthood**.
 
-The library provides reusable physiological components and complete simulation scenarios for studying:
+The project is designed for research, reproducible simulation, teaching and synthetic-data generation where mechanistic interpretability matters. It includes healthy scenarios, congenital cardiovascular conditions, oxygen transport, altitude-dependent physiology and the fetal-to-neonatal transition.
 
-- 🫀 cardiovascular dynamics;
-- 🫁 respiratory physiology;
-- 👶 fetal-to-neonatal transition;
-- 🩺 cardiovascular and respiratory anomalies;
-- ✂️ clinical practices such as umbilical cord clamping;
-- 🌍 physiological responses under different physical and environmental conditions.
-
-PatientEvoPhysio was developed to support **research, simulation and education** in situations where experimental investigation in living subjects may be difficult or ethically constrained.
-
-The library builds upon concepts and components from **Physiolibrary 2.3.1** and extends them with models specifically developed for multistage human physiological simulation.
-
-📌 **Software DOI:** [10.5281/zenodo.10054996](https://doi.org/10.5281/zenodo.10054996)
+> **v2.0.0 is the recommended stable release.** It modernizes the published simulator into a reproducible research-software and research-data platform while preserving the audited physiological parameterization of the validated v2 line.
 
 ---
 
-## 🔬 What can you model?
+## ✨ What is new in v2.0.0?
 
-PatientEvoPhysio contains physiological scenarios organized according to four major life stages:
-
-| Life stage | Available framework |
+| Area | v2.0.0 |
 |---|---|
-| 🤰 **Fetal** | Cardiovascular and oxygen transport physiology |
-| 👶 **Neonatal** | Cardiovascular–respiratory physiology and birth transition |
-| 🧒 **Childhood** | Pediatric physiological scenarios |
-| 🧑 **Adulthood** | Adult cardiovascular and respiratory scenarios |
+| 🧬 **Modelica source** | Internationalized English identifiers and documented migration from legacy names |
+| 🖼️ **Visual layer** | Redesigned external package/component icons; no active Base64 image payloads |
+| ✅ **Validation** | Standard, extended and initialization-diagnostic workflows |
+| 📊 **Research data** | Curated CSV generation, metadata, provenance and validation reports |
+| 🔬 **Scientific reports** | Pressure, volume, oxygen, valve-event and P–V metrics |
+| 🤖 **AI / diagnosis** | Diagnostic benchmark tables and time-series indexes |
+| 🔀 **Hybrid discovery** | Derived cardiac-mode labels for mode-dependent system identification |
+| 📦 **Dataset release** | File index, variable dictionary, QA summary, checksums and deposit-ready packaging |
+| 🧪 **Reproducibility** | Portable Windows/OpenModelica runners and GitHub static checks |
 
-The modular structure allows individual components to be combined to build new physiological scenarios and investigate different clinical or physiological conditions.
+---
+
+## 🔬 Physiological scope
+
+| Life stage | Main capabilities |
+|---|---|
+| 🤰 **Fetal** | Fetal circulation, placental oxygen exchange, umbilical circulation |
+| 👶 **Neonatal** | Cardiovascular–respiratory physiology, oxygen transport, birth transition |
+| 🧒 **Childhood** | Pediatric cardiovascular scenarios, healthy and stenosis cases |
+| 🧑 **Adulthood** | Adult cardiovascular and respiratory physiology |
+
+Canonical v2 scenarios include:
+
+```text
+PatientEvoPhysio.Scenarios.Adult.Healthy
+PatientEvoPhysio.Scenarios.Child.Healthy
+PatientEvoPhysio.Scenarios.Child.Stenosis
+PatientEvoPhysio.Scenarios.Neonate.Healthy
+PatientEvoPhysio.Scenarios.Neonate.Stenosis
+PatientEvoPhysio.Scenarios.Neonate.Coarctation_of_the_Aorta
+PatientEvoPhysio.Scenarios.Neonate.Tetralogy_of_Fallot
+PatientEvoPhysio.Scenarios.Neonate.Transposition_of_the_Great_Arteries
+PatientEvoPhysio.Scenarios.Neonate.Persistence_of_Ductus_Arteriosus
+PatientEvoPhysio.Scenarios.Fetus.FetalToNeonatal_Transition
+```
 
 ---
 
 ## 🏗️ Library architecture
 
-The internal structure of PatientEvoPhysio is organized into **eight main packages**:
+The active package is organized into eight main namespaces:
 
-![PatientEvoPhysio library architecture](https://github.com/ehsepulvedao/PatientEvoPhysio/assets/7245709/b984a87f-c5c8-4d01-8544-f79505e25cea)
-
-| Package | Description |
+| Package | Purpose |
 |---|---|
-| 🎨 **Icons** | Graphical icons used by the physiological components. |
-| 🧩 **Components** | Reusable cardiovascular, respiratory and physiological components used to assemble simulation scenarios. |
-| 📐 **Types** | Specialized data types derived from Modelica primitive types. |
-| 🧍 **Scenarios** | Complete physiological models organized into adult, childhood, neonatal and fetal scenarios. |
-| 🔌 **Connectors** | Interfaces that enable communication between the internal variables of physiological components. |
-| 🧮 **Functions** | Mathematical functions including Hill and inverse Hill equations and pulmonary or placental gas-exchange relationships. |
-| 📈 **Signals** | Components describing time-varying physiological behavior such as ventricular elastance, respiration, placental respiration and foramen ovale dynamics. |
-| 📚 **UsersGuide** | Documentation, acknowledgements, authorship and scientific information associated with the library. |
+| 🎨 `Icons` | Visual definitions used by physiological components |
+| 🧩 `Components` | Reusable cardiovascular, respiratory and physiological building blocks |
+| 📐 `Types` | Specialized quantities and data types |
+| 🧍 `Scenarios` | Complete adult, child, neonatal and fetal models |
+| 🔌 `Connectors` | Physiological flow and signal interfaces |
+| 🧮 `Functions` | Hill-type and pulmonary/placental support functions |
+| 📈 `Signals` | Elastance, respiration, vascular and transition signals |
+| 📚 `UsersGuide` | Documentation, authorship and scientific information |
+
+The graphical resources used by OMEdit are stored under `Resources/Images/icon/` and referenced through portable `modelica://PatientEvoPhysio/...` URIs.
 
 ---
 
-## 🖥️ Library overview
-
-PatientEvoPhysio follows a modular approach: physiological components can be interconnected through dedicated connectors to reproduce complex cardiovascular and respiratory systems while preserving physiological interpretability.
-
----
-
-## 🚀 Installation
+## 🚀 Quick start
 
 ### Requirements
 
-PatientEvoPhysio currently relies on:
+The validated v2.0.0 environment is:
 
-- **Modelica Standard Library 3.2.x**  
-  - **Modelica 3.2.3 is recommended with OpenModelica**
-- **Physiolibrary 2.3.1**
-- A Modelica-compatible modeling and simulation environment, such as:
-  - [OpenModelica](https://openmodelica.org/)
-  - [Dymola](https://www.3ds.com/products/catia/dymola)
+```text
+OpenModelica 1.27.1 (validated release environment)
+Modelica 3.2.3
+Complex 3.2.3
+ModelicaServices 3.2.3
+Physiolibrary 2.3.1
+Python 3.9+ (optional data-generation utilities)
+```
 
 > [!IMPORTANT]
-> **OpenModelica / OMEdit users:** recent OpenModelica installations may automatically load **Modelica 4.x** when OMEdit starts.  
-> Physiolibrary 2.3.1 was developed against the Modelica 3.2.x family. If Modelica 4.x is already loaded before PatientEvoPhysio is opened, OMEdit may display a library-version conflict and PatientEvoPhysio may fail to load.
->
-> To avoid this, follow the loading order below.
+> Recent OMEdit installations may automatically load Modelica 4.x. PatientEvoPhysio v2.0.0 is validated with the Modelica 3.2.x / Physiolibrary 2.3.1 stack. Avoid mixing that stack with ModelicaServices 4.x.
 
-### Recommended OpenModelica / OMEdit loading procedure
+### Recommended OMEdit loading order
 
-1. **Start OMEdit without automatically loading the latest Modelica library.**
+1. `Tools → Options → Libraries`.
+2. Disable **Load latest Modelica version on startup**.
+3. Restart OMEdit completely.
+4. Load **Modelica 3.2.3** manually.
+5. Open `PatientEvoPhysio.mo`.
+6. Allow **Physiolibrary 2.3.1** to load.
+7. Verify that Modelica/Complex/ModelicaServices are all from the 3.2.3 family.
 
-   Open:
-
-   ```text
-   Tools → Options → Libraries
-   ```
-
-   Then:
-
-   - disable **Load latest Modelica version on startup**;
-   - if `Modelica` is explicitly listed among the system libraries loaded automatically at startup, remove it from that startup list;
-   - save the settings and **restart OMEdit completely**.
-
-2. **Check the Libraries panel after restarting OMEdit.**
-
-   Ideally, the `Modelica` library should **not** already be loaded.
-
-3. **Load Modelica 3.2.3 manually.**
-
-   From the OMEdit start screen, use:
-
-   ```text
-   System Libraries → Modelica → 3.2.3
-   ```
-
-   If Modelica 3.2.3 is not yet installed, install it first using OMEdit's **Install Library** / package manager.
-
-4. **Open `PatientEvoPhysio.mo`.**
-
-   Once Modelica 3.2.3 is loaded, open:
-
-   ```text
-   PatientEvoPhysio.mo
-   ```
-
-5. **Allow Physiolibrary 2.3.1 to load.**
-
-   PatientEvoPhysio declares Physiolibrary as a dependency. With a compatible Modelica 3.2.x environment already loaded, OMEdit should automatically load **Physiolibrary 2.3.1** when PatientEvoPhysio is opened.
-
-6. **Verify the loaded libraries.**
-
-   The Libraries panel should contain the compatible stack:
-
-   ```text
-   Modelica 3.2.3
-   Physiolibrary 2.3.1
-   PatientEvoPhysio
-   ```
-
-7. Explore the available models under:
-
-   ```text
-   PatientEvoPhysio.Scenarios
-   ```
-
-   You can then select a physiological scenario, configure its parameters and run the simulation.
-
-### If OMEdit reports an incompatible already-loaded Modelica version
-
-If OMEdit displays a message similar to:
-
-```text
-PatientEvoPhysio uses versions of already loaded libraries
-which are not compatible with the required ones.
-```
-
-and the Messages panel indicates that **Modelica 4.x** is already loaded, do not assume that PatientEvoPhysio itself is corrupted.
-
-Close OMEdit and repeat the loading sequence above:
-
-```text
-Disable automatic loading of the latest Modelica library
-        ↓
-Restart OMEdit
-        ↓
-Load Modelica 3.2.3 manually
-        ↓
-Open PatientEvoPhysio.mo
-        ↓
-Physiolibrary 2.3.1 loads automatically
-```
-
-This loading order avoids the Modelica 4.x / Physiolibrary 2.3.1 compatibility conflict observed with recent OMEdit installations.
-
-### Clone the repository
-
-You can download the repository directly from GitHub or clone it using:
+### Clone
 
 ```bash
 git clone https://github.com/ehsepulvedao/PatientEvoPhysio.git
+cd PatientEvoPhysio
 ```
-
 
 ---
 
-## 🎯 Example applications
+## ✅ Validation status
 
-PatientEvoPhysio has been used to investigate physiological questions including:
+The stable release is based on the RC6/RC7 validation campaign performed with OpenModelica 1.27.1 (64-bit):
 
-### Fetal-to-neonatal transition
+- **9/9 short scenarios** completed the standard workflow;
+- **0 files requiring review** in the standard validation run;
+- initialization diagnostics completed successfully;
+- **600 s neonatal oxygen** workflow completed with zero review flags;
+- **720 s fetal-to-neonatal transition** workflow completed with zero review flags;
+- extended-profile validation reported **2/2 profiles passed**.
 
-Simulation of the cardiovascular and respiratory changes occurring during birth, including the transition from placental to pulmonary gas exchange.
+For a fresh installation, run:
 
-### Umbilical cord clamping
+```bat
+RUN_STANDARD_VALIDATION.bat
+RUN_EXTENDED_VALIDATION.bat
+```
 
-Evaluation of different timings of umbilical cord clamping and their influence on neonatal cardiovascular adaptation.
+For the full publication-oriented workflow:
 
-### Neonatal cardiovascular and respiratory physiology
+```bat
+RUN_FULL_PUBLICATION_PIPELINE.bat
+```
 
-Simulation of coupled cardiovascular and respiratory dynamics in neonates under different physiological and environmental conditions.
+The validation system intentionally separates broad numerical/engineering sanity checks from scientific interpretation. See `docs/QUALITY_ASSURANCE.md`, `docs/SCIENTIFIC_VALIDATION.md` and `docs/VALIDATION_BASELINE.md`.
+
+---
+
+## 📊 Generate research datasets
+
+PatientEvoPhysio v2.0.0 can generate article-ready, traceable simulation datasets instead of only interactive OMEdit results.
+
+### Main one-click workflows
+
+```bat
+RUN_DATA_ARTICLE_REFERENCE.bat
+RUN_DIAGNOSIS_BENCHMARK_DATA.bat
+RUN_HYBRID_DISCOVERY_DATA.bat
+RUN_OXYGEN_BENCHMARK_DATA.bat
+RUN_ALL_PUBLICATION_DATA.bat
+```
+
+Each run can produce:
+
+```text
+curated CSV
+metadata.json
+validation.json
+validation.details.json
+scientific_summary.json / .csv / .md
+quality figures (SVG)
+run.mos
+OpenModelica log
+```
+
+Publication-scale generated data are **not committed to GitHub**. The repository contains the model, generation recipes and QA infrastructure; released datasets should be deposited separately and linked by DOI.
+
+---
+
+## 🧠 Research workflows enabled by v2
+
+### Data article / reusable physiological dataset
+
+The repository can build a deposit-ready package containing file indexes, variable dictionaries, provenance, checksums and quality-control reports. See `docs/data_in_brief/` and `docs/PUBLICATION_WORKFLOWS.md`.
+
+### Diagnostic AI benchmark
+
+Healthy and pathological scenarios can be converted into curated time-series benchmarks and derived feature tables for supervised diagnosis studies.
+
+### Hybrid / symbolic system discovery
+
+The workflow can derive valve-based cardiac phase labels such as filling, isovolumetric contraction, ejection and isovolumetric relaxation, supporting Hybrid-SINDy and symbolic-regression studies.
+
+### Virtual populations
+
+`generate_population.py` supports deterministic virtual cohorts and Latin-hypercube designs. Physiological parameter bounds are intentionally **not invented by the software**; they must be supplied from defensible scientific sources.
+
+---
+
+## 📁 Repository structure
+
+```text
+PatientEvoPhysio.mo          active Modelica package
+Resources/Images/icon/       active graphical assets
+config/                      scenarios and experiment definitions
+scripts/                     simulation, QA and packaging utilities
+tests/                       static/reproducibility tests
+docs/                        scientific and software documentation
+data/generated/              generated locally; ignored by Git
+release/                     generated dataset release packages; ignored by Git
+```
 
 ---
 
 ## 📖 Scientific publications
 
-PatientEvoPhysio and its underlying physiological models have been described and applied in several scientific studies.
+PatientEvoPhysio and its underlying physiological models have been described and applied in the following work:
 
-### Main publications
-
-1. **Sepúlveda-Oviedo EH, Bermeo Clavijo LE, Méndez Córdoba LC.**  
-   *Effect of timing of umbilical cord clamping and birth on fetal to neonatal transition: OpenModelica-based virtual simulator-based approach.*  
+1. **Sepúlveda-Oviedo EH, Bermeo Clavijo LE, Méndez Córdoba LC.**
+   *Effect of timing of umbilical cord clamping and birth on fetal to neonatal transition: OpenModelica-based virtual simulator-based approach.*
    **Biocybernetics and Biomedical Engineering.** 2024;44(3):716–730.
+   DOI: `10.1016/j.bbe.2024.08.008`
 
-2. **Sepúlveda-Oviedo EH, Bermeo Clavijo LE, Méndez Córdoba LC.**  
-   *OpenModelica-based virtual simulator for the cardiovascular and respiratory physiology of a neonate.*  
+2. **Sepúlveda-Oviedo EH, Bermeo Clavijo LE, Méndez Córdoba LC.**
+   *OpenModelica-based virtual simulator for the cardiovascular and respiratory physiology of a neonate.*
    **Journal of Medical Engineering & Technology.** 2022;46(3):179–197.
+   DOI: `10.1080/03091902.2022.2026500`
 
-3. **Sepúlveda-Oviedo EH, Bermeo L, Méndez L.**  
-   *Desarrollo de una herramienta de simulación cardiovascular neonatal para la enseñanza y la investigación.*  
-   XLVI Congresso Brasileiro de Educação em Engenharia (COBENGE) and 1º Simpósio Internacional de Educação em Engenharia da ABENGE, Salvador, Brazil, 2018.
-
-4. **Sepúlveda-Oviedo EH.**  
-   *Estudio de la práctica del pinzamiento del cordón umbilical usando análisis computacional de la información bibliográfica, modelos de eventos discretos y modelos dinámicos.*  
-   Master's thesis, Universidad Nacional de Colombia, 2019.
-
-<details>
-<summary><strong>📚 Scientific foundations and additional references</strong></summary>
-
-<br>
-
-- Yigit MB, Kowalski WJ, Hutchon DJR, Pekkana K. *Transition from fetal to neonatal circulation: Modeling the effect of umbilical cord clamping.* Journal of Biomechanics. 2015;48(9):1662–1670.
-
-- Hoppensteadt F, Peskin C. *Modeling and Simulation in Medicine and the Life Sciences.* 2nd ed. Springer; 2002.
-
-- Goodwin J, van Meurs W, Sá-Couto C, Beneken J, Graves S. *A model for educational simulation of infant cardiovascular physiology.* Anesthesia & Analgesia. 2004;99(6):1655–1664.
-
-- Sá-Couto P, Van Meurs W, Bernardes J, Marques de Sá J, Goodwin J. *Mathematical model for educational simulation of oxygen delivery to the fetus.* 2002;10(1):59–66.
-
-- Sá-Couto CD, van Meurs WL, Goodwin JA, Andriessen P. *A model for educational simulation of neonatal cardiovascular pathophysiology.* 2006;1:4–9.
-
-- Serov A, Salafia C, Filoche M, Grebenkov D. *Analytical theory of oxygen transport in the human placenta.* Journal of Theoretical Biology. 2015;368:133–144.
-
-- Mateják M, Kofránek J. *Physiomodel — an integrative physiology in Modelica.* Conf Proc IEEE Eng Med Biol Soc. 2015:1464–1467.
-
-- Huikeshoven F, Coleman T, Jongsma H. *Mathematical model of the fetal cardiovascular system: the uncontrolled case.* American Journal of Physiology. 1980;239(3):R317–R325.
-
-- Koch G. *Alveolar ventilation, diffusing capacity and the A-a PO₂ difference in the newborn infant.* Respiration Physiology. 1968;4(2):168–192.
-
-- Guyton A. *Textbook of Medical Physiology.* 8th ed. W.B. Saunders Company; 1991.
-
-- Graham T, Jarmakani M. *Evaluation of ventricular function in infants and children.* Pediatric Clinics of North America. 1971;18(4):1109–1132.
-
-- Paul A, Das S. *Valvular heart disease and anaesthesia.* Indian Journal of Anaesthesia. 2017;61(9):721–727.
-
-- Avery G, Fletcher M, MacDonald M. *Neonatology: Pathophysiology and Management of the Newborn.* 5th ed. Lippincott Williams & Wilkins; 1999.
-
-</details>
+Additional scientific foundations are documented in `UsersGuide` and the project documentation.
 
 ---
 
-## 📌 How to cite PatientEvoPhysio
+## 📌 Citation
 
-If you use **PatientEvoPhysio** in research, teaching or scientific software development, please cite the software repository using its DOI:
+If you use PatientEvoPhysio, please cite the software and the scientific publication corresponding to the model/scenario used.
 
-> **PatientEvoPhysio — Open-source Modelica library for human cardiovascular and respiratory physiology.**  
-> DOI: [10.5281/zenodo.10054996](https://doi.org/10.5281/zenodo.10054996)
+**Software DOI:** [10.5281/zenodo.10054996](https://doi.org/10.5281/zenodo.10054996)
 
-Please also cite the relevant scientific publication(s) associated with the physiological model or scenario used in your work.
+A machine-readable citation is provided in [`CITATION.cff`](CITATION.cff).
 
 ---
 
-## 👥 Development and contributors
+## 👥 Maintainer and contributors
 
-### Release manager
+### Maintainer / release manager
 
-**Edgar Hernando Sepúlveda-Oviedo**  
-[ResearchGate](https://www.researchgate.net/profile/Edgar-Sepulveda-Oviedo)
+**Edgar Hernando Sepúlveda-Oviedo**
+PROMES-CNRS (UPR 8521), Perpignan, France
+Université de Perpignan Via Domitia, Perpignan, France
+Email: `edgar-hernando.sepulveda-oviedo@univ-perp.fr`
 
-PRocédés, matériaux et énergie solaire (PROMES-CNRS), Perpignan, France.
+### Original contributors
 
-### Contributors
+**Leonardo Bermeo Clavijo** — Universidad Nacional de Colombia
+**Luis Carlos Méndez-Córdoba** — Universidad Nacional de Colombia / Instituto Materno Infantil – Hospital La Victoria
 
-**Leonardo Bermeo Clavijo**  
-[ResearchGate](https://www.researchgate.net/profile/Leonardo-Bermeo)
-
-Universidad Nacional de Colombia, Facultad de Ingeniería, Departamento de Ingeniería Eléctrica y Electrónica, Bogotá, Colombia.
-
-**Luis Carlos Méndez-Córdoba**  
-[ResearchGate](https://www.researchgate.net/profile/Luis-Mendez-Cordoba)
-
-Universidad Nacional de Colombia / Instituto Materno Infantil – Hospital La Victoria, Bogotá, Colombia.
+See [`AUTHORS.md`](AUTHORS.md) for details.
 
 ---
 
 ## 🤝 Contributing
 
-Contributions that improve the physiological models, documentation, simulation scenarios or compatibility of PatientEvoPhysio are welcome.
-
-You can contribute by:
-
-- reporting bugs or unexpected simulation behavior;
-- proposing new physiological components;
-- adding or extending clinical scenarios;
-- improving documentation;
-- testing compatibility with Modelica environments;
-- proposing validation cases or physiological datasets.
-
-For major changes, please open an issue first to discuss the proposed contribution.
-
----
-
-## 🐛 Issues
-
-Found a problem or have a suggestion?
-
-Please use the **GitHub Issues** section of this repository whenever possible.
-
-You may also contact:
-
-- **Edgar Hernando Sepúlveda-Oviedo:** edgar-hernando.sepulveda-oviedo@univ-perp.fr
-- **Leonardo Bermeo Clavijo:** lbermeoc@unal.edu.co
-
----
-
-## 🗺️ Roadmap
-
-Future developments of PatientEvoPhysio aim to extend its physiological scenarios, improve model validation and facilitate its integration into virtual laboratories and educational environments.
-
-The library is also associated with the **VirtualLabUN** initiative of the Universidad Nacional de Colombia.
+Bug reports, compatibility tests, physiological validation cases, documentation improvements and new scientifically justified scenarios are welcome. Please open an issue before major model changes so that numerical and physiological implications can be discussed explicitly.
 
 ---
 
 ## ⚖️ License
 
-PatientEvoPhysio is released under the **Creative Commons CC0 1.0 Universal** public-domain dedication.
-
-This allows the software to be reused, modified and redistributed with minimal restrictions.
-
-See the [`LICENSE`](LICENSE) file for the complete terms.
+PatientEvoPhysio is released under the **Creative Commons CC0 1.0 Universal** public-domain dedication. See [`LICENSE`](LICENSE).
 
 ---
 
 ## ⚠️ Disclaimer
 
-PatientEvoPhysio is intended for **research, education and computational simulation**.
-
-The models provided in this repository are not medical devices and are **not intended for clinical diagnosis, treatment decisions or direct patient management**.
+PatientEvoPhysio is research and educational software. It is **not a medical device** and is not intended for clinical diagnosis, treatment decisions or direct patient management.
 
 ---
 
 <div align="center">
 
-### 🫀 PatientEvoPhysio
+### 🫀 PatientEvoPhysio v2.0.0
 
-**Computational physiology across the human life cycle**
+**Mechanistic physiology · reproducible simulation · research-ready data**
 
-If this project is useful for your research, consider ⭐ starring the repository.
+If PatientEvoPhysio is useful to your work, consider ⭐ starring the repository.
 
 </div>

@@ -1,0 +1,29 @@
+{
+  "schema_version": 2,
+  "note": "Default scientific output subset. Raw OpenModelica output remains available explicitly with --raw or --both.",
+  "patterns": [
+    "time",
+    "*.pressure_mmHg",
+    "*.flow_L_per_min",
+    "*.volume",
+    "*.oxygenSaturation",
+    "*.O2_current",
+    "*.open",
+    "*.R",
+    "*ElastanceSignal.E",
+    "*ElastanceSignal.HP",
+    "*.metabolicConsumptionRate",
+    "pulmonaryRespiration.*",
+    "placentalRespiration.*",
+    "altitude.*"
+  ],
+  "neonate_left_heart": [
+    "leftAtrium.pressure_mmHg",
+    "leftVentricle.pressure_mmHg",
+    "leftVentricle.volume",
+    "intrathoracicArteries.pressure_mmHg",
+    "mitralValve.open",
+    "aorticValve.open",
+    "pulmonaryArterialResistance.flow_L_per_min"
+  ]
+}
