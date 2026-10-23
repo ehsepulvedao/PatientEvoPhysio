@@ -85,37 +85,114 @@ PatientEvoPhysio follows a modular approach: physiological components can be int
 
 PatientEvoPhysio currently relies on:
 
-- **Modelica 3.2.3**
+- **Modelica Standard Library 3.2.x**  
+  - **Modelica 3.2.3 is recommended with OpenModelica**
 - **Physiolibrary 2.3.1**
 - A Modelica-compatible modeling and simulation environment, such as:
   - [OpenModelica](https://openmodelica.org/)
   - [Dymola](https://www.3ds.com/products/catia/dymola)
 
-### Installation steps
+> [!IMPORTANT]
+> **OpenModelica / OMEdit users:** recent OpenModelica installations may automatically load **Modelica 4.x** when OMEdit starts.  
+> Physiolibrary 2.3.1 was developed against the Modelica 3.2.x family. If Modelica 4.x is already loaded before PatientEvoPhysio is opened, OMEdit may display a library-version conflict and PatientEvoPhysio may fail to load.
+>
+> To avoid this, follow the loading order below.
 
-1. Download or clone this repository:
+### Recommended OpenModelica / OMEdit loading procedure
+
+1. **Start OMEdit without automatically loading the latest Modelica library.**
+
+   Open:
+
+   ```text
+   Tools → Options → Libraries
+   ```
+
+   Then:
+
+   - disable **Load latest Modelica version on startup**;
+   - if `Modelica` is explicitly listed among the system libraries loaded automatically at startup, remove it from that startup list;
+   - save the settings and **restart OMEdit completely**.
+
+2. **Check the Libraries panel after restarting OMEdit.**
+
+   Ideally, the `Modelica` library should **not** already be loaded.
+
+3. **Load Modelica 3.2.3 manually.**
+
+   From the OMEdit start screen, use:
+
+   ```text
+   System Libraries → Modelica → 3.2.3
+   ```
+
+   If Modelica 3.2.3 is not yet installed, install it first using OMEdit's **Install Library** / package manager.
+
+4. **Open `PatientEvoPhysio.mo`.**
+
+   Once Modelica 3.2.3 is loaded, open:
+
+   ```text
+   PatientEvoPhysio.mo
+   ```
+
+5. **Allow Physiolibrary 2.3.1 to load.**
+
+   PatientEvoPhysio declares Physiolibrary as a dependency. With a compatible Modelica 3.2.x environment already loaded, OMEdit should automatically load **Physiolibrary 2.3.1** when PatientEvoPhysio is opened.
+
+6. **Verify the loaded libraries.**
+
+   The Libraries panel should contain the compatible stack:
+
+   ```text
+   Modelica 3.2.3
+   Physiolibrary 2.3.1
+   PatientEvoPhysio
+   ```
+
+7. Explore the available models under:
+
+   ```text
+   PatientEvoPhysio.Scenarios
+   ```
+
+   You can then select a physiological scenario, configure its parameters and run the simulation.
+
+### If OMEdit reports an incompatible already-loaded Modelica version
+
+If OMEdit displays a message similar to:
+
+```text
+PatientEvoPhysio uses versions of already loaded libraries
+which are not compatible with the required ones.
+```
+
+and the Messages panel indicates that **Modelica 4.x** is already loaded, do not assume that PatientEvoPhysio itself is corrupted.
+
+Close OMEdit and repeat the loading sequence above:
+
+```text
+Disable automatic loading of the latest Modelica library
+        ↓
+Restart OMEdit
+        ↓
+Load Modelica 3.2.3 manually
+        ↓
+Open PatientEvoPhysio.mo
+        ↓
+Physiolibrary 2.3.1 loads automatically
+```
+
+This loading order avoids the Modelica 4.x / Physiolibrary 2.3.1 compatibility conflict observed with recent OMEdit installations.
+
+### Clone the repository
+
+You can download the repository directly from GitHub or clone it using:
 
 ```bash
 git clone https://github.com/ehsepulvedao/PatientEvoPhysio.git
 ```
 
-2. Install **Physiolibrary 2.3.1** in your Modelica environment.
-
-3. Open the file:
-
-```text
-PatientEvoPhysio.mo
-```
-
-4. Load `PatientEvoPhysio` as a Modelica library.
-
-5. Explore the available models under:
-
-```text
-PatientEvoPhysio.Scenarios
-```
-
-You can then select a physiological scenario, configure its parameters and run the simulation from your preferred Modelica environment.
 
 ---
 
