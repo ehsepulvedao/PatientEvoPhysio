@@ -251,21 +251,24 @@ A machine-readable citation is provided in [`CITATION.cff`](CITATION.cff).
 
 ---
 
-## 👥 Maintainer and contributors
+## 👥 Authors, contributors and maintenance
 
-### Maintainer / release manager
+PatientEvoPhysio was originally developed through the collaboration of the following authors and scientific contributors:
+
+- **Edgar Hernando Sepúlveda-Oviedo** — **original author, principal developer and scientific contributor**; current maintainer and release manager.
+- **Leonardo Enrique Bermeo Clavijo** — original scientific contributor and co-author.
+- **Luis Carlos Méndez-Córdoba** — original scientific contributor and co-author.
+
+### Current project maintenance
 
 **Edgar Hernando Sepúlveda-Oviedo**
 PROMES-CNRS (UPR 8521), Perpignan, France
 Université de Perpignan Via Domitia, Perpignan, France
 Email: `edgar-hernando.sepulveda-oviedo@univ-perp.fr`
 
-### Original contributors
+The current v2 development and maintenance line is led by Edgar Hernando Sepúlveda-Oviedo. Historical scientific contributions and authorship are preserved in the repository and associated publications.
 
-**Leonardo Bermeo Clavijo** — Universidad Nacional de Colombia
-**Luis Carlos Méndez-Córdoba** — Universidad Nacional de Colombia / Instituto Materno Infantil – Hospital La Victoria
-
-See [`AUTHORS.md`](AUTHORS.md) for details.
+See [`AUTHORS.md`](AUTHORS.md) for detailed authorship, project roles and maintenance information.
 
 ---
 
