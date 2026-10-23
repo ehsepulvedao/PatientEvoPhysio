@@ -1,0 +1,146 @@
+{
+  "schema_version": 2,
+  "library": "PatientEvoPhysio",
+  "scenarios": {
+    "adult_healthy": {
+      "model": "PatientEvoPhysio.Scenarios.Adult.Healthy",
+      "group": "adult",
+      "description": "Healthy adult cardiovascular-respiratory scenario"
+    },
+    "child_healthy": {
+      "model": "PatientEvoPhysio.Scenarios.Child.Healthy",
+      "group": "child",
+      "description": "Healthy child cardiovascular-respiratory scenario"
+    },
+    "child_stenosis": {
+      "model": "PatientEvoPhysio.Scenarios.Child.Stenosis",
+      "group": "child",
+      "description": "Child stenosis scenario"
+    },
+    "neonate_healthy": {
+      "model": "PatientEvoPhysio.Scenarios.Neonate.Healthy",
+      "group": "neonate",
+      "description": "Healthy neonatal cardiovascular-respiratory scenario"
+    },
+    "neonate_stenosis": {
+      "model": "PatientEvoPhysio.Scenarios.Neonate.Stenosis",
+      "group": "neonate",
+      "description": "Neonatal aortic stenosis scenario"
+    },
+    "neonate_coarctation": {
+      "model": "PatientEvoPhysio.Scenarios.Neonate.Coarctation_of_the_Aorta",
+      "group": "neonate",
+      "description": "Neonatal coarctation of the aorta"
+    },
+    "neonate_tof": {
+      "model": "PatientEvoPhysio.Scenarios.Neonate.Tetralogy_of_Fallot",
+      "group": "neonate",
+      "description": "Neonatal Tetralogy of Fallot"
+    },
+    "neonate_tga": {
+      "model": "PatientEvoPhysio.Scenarios.Neonate.Transposition_of_the_Great_Arteries",
+      "group": "neonate",
+      "description": "Neonatal transposition of the great arteries"
+    },
+    "neonate_pda": {
+      "model": "PatientEvoPhysio.Scenarios.Neonate.Persistence_of_Ductus_Arteriosus",
+      "group": "neonate",
+      "description": "Neonatal patent/persistent ductus arteriosus"
+    },
+    "fetal_to_neonatal_transition": {
+      "model": "PatientEvoPhysio.Scenarios.Fetus.FetalToNeonatal_Transition",
+      "group": "transition",
+      "description": "Fetal-to-neonatal transition including birth and cord-clamping physiology"
+    }
+  },
+  "profiles": {
+    "hemodynamic_smoke": {
+      "start_time": 0.0,
+      "stop_time": 5.0,
+      "number_of_intervals": 5000,
+      "method": "dassl",
+      "tolerance": 1e-06,
+      "scenarios": [
+        "adult_healthy",
+        "child_healthy",
+        "child_stenosis",
+        "neonate_healthy",
+        "neonate_stenosis",
+        "neonate_coarctation",
+        "neonate_tof",
+        "neonate_tga",
+        "neonate_pda"
+      ]
+    },
+    "neonate_oxygen_10min": {
+      "start_time": 0.0,
+      "stop_time": 600.0,
+      "number_of_intervals": 6000,
+      "method": "dassl",
+      "tolerance": 1e-06,
+      "scenarios": [
+        "neonate_healthy"
+      ]
+    },
+    "transition_12min": {
+      "start_time": 0.0,
+      "stop_time": 720.0,
+      "number_of_intervals": 7200,
+      "method": "dassl",
+      "tolerance": 1e-06,
+      "scenarios": [
+        "fetal_to_neonatal_transition"
+      ]
+    },
+    "transition_24h": {
+      "start_time": 0.0,
+      "stop_time": 86400.0,
+      "number_of_intervals": 8640,
+      "method": "dassl",
+      "tolerance": 1e-06,
+      "scenarios": [
+        "fetal_to_neonatal_transition"
+      ]
+    },
+    "hybrid_discovery_30s": {
+      "start_time": 0.0,
+      "stop_time": 30.0,
+      "number_of_intervals": 30000,
+      "method": "dassl",
+      "tolerance": 1e-06,
+      "scenarios": [
+        "neonate_healthy"
+      ]
+    },
+    "diagnosis_benchmark_30s": {
+      "start_time": 0.0,
+      "stop_time": 30.0,
+      "number_of_intervals": 30000,
+      "method": "dassl",
+      "tolerance": 1e-06,
+      "scenarios": [
+        "neonate_healthy",
+        "neonate_stenosis",
+        "neonate_coarctation",
+        "neonate_tof",
+        "neonate_tga",
+        "neonate_pda"
+      ]
+    },
+    "oxygen_benchmark_10min": {
+      "start_time": 0.0,
+      "stop_time": 600.0,
+      "number_of_intervals": 6000,
+      "method": "dassl",
+      "tolerance": 1e-06,
+      "scenarios": [
+        "neonate_healthy",
+        "neonate_stenosis",
+        "neonate_coarctation",
+        "neonate_tof",
+        "neonate_tga",
+        "neonate_pda"
+      ]
+    }
+  }
+}

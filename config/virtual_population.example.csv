@@ -1,0 +1,4 @@
+patient_id,scenario_id,parameter,value
+example_001,neonate_healthy,leftVentricularElastanceSignal.HR,130
+example_001,neonate_healthy,leftVentricle.volume_start,4.8e-6
+example_002,neonate_healthy,leftVentricularElastanceSignal.HR,120
