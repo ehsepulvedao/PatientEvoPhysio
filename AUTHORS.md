@@ -1,17 +1,29 @@
-# Authors and current maintenance
+# Authors, contributors and current maintenance
 
-## Current release manager / maintainer
+## Original development team
+
+PatientEvoPhysio was originally developed through the collaboration of the following authors and scientific contributors:
+
+- **Edgar Hernando Sepúlveda-Oviedo** — **original author, principal developer and scientific contributor**; current maintainer and release manager.
+- **Leonardo Enrique Bermeo Clavijo** — original scientific contributor and co-author.
+- **Luis Carlos Méndez-Córdoba** — original scientific contributor and co-author.
+
+This wording reflects both the original authorship of the project and the respective roles in its development. Edgar Hernando Sepúlveda-Oviedo led the implementation of the library and remains responsible for the current maintenance and release line.
+
+## Current maintainer / release manager
 
 **Edgar Hernando Sepúlveda-Oviedo**
 Email: edgar-hernando.sepulveda-oviedo@univ-perp.fr
 
+Current affiliations:
+
 1. PROMES-CNRS (UPR 8521), Rambla de la thermodynamique, Tecnosud, Perpignan, 66100, France.
 2. Université de Perpignan Via Domitia, 52 Avenue Paul Alduy, Perpignan, 66860, France.
 
-## Original scientific contributors
+## Project history and provenance
 
-- Edgar Hernando Sepúlveda-Oviedo
-- Leonardo Enrique Bermeo Clavijo
-- Luis Carlos Méndez-Córdoba
+The original PatientEvoPhysio development and associated scientific work involved collaboration linked to Universidad Nacional de Colombia. Subsequent development, validation and maintenance have continued through later research activities, including work associated with LAAS-CNRS and the current PROMES-CNRS / Université de Perpignan Via Domitia maintenance line.
 
-The library was developed through work associated historically with Universidad Nacional de Colombia and LAAS-CNRS. Historical component revision annotations are retained for provenance; the current maintainer affiliations above apply to the v2 maintenance and future development line.
+Historical component revision annotations, publication authorship and repository history are retained for provenance.
+
+For scientific attribution, users should cite the software and the publication corresponding to the physiological model or scenario used.
