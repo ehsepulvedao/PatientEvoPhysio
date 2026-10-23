@@ -5682,7 +5682,7 @@ end Systemic_Vascular;
     </html>"));
   end UsersGuide;
   annotation(
-    Icon(graphics = {Rectangle(origin = {0, 12}, lineColor = {85, 255, 127}, fillColor = {255, 255, 255}, fillPattern = FillPattern.VerticalCylinder, lineThickness = 0.75, extent = {{-98, 68}, {98, -68}}), Bitmap(origin = {2, 8}, extent = {{-96, 82}, {96, -82}}, fileName = "modelica://PatientEvoPhysio/Resources/Images/icon/package_root.svg")}),
+    Icon(graphics = {Bitmap(origin = {-4, 3}, extent = {{-122, 105}, {122, -105}}, fileName = "modelica://PatientEvoPhysio/Resources/Images/icon/package_root.svg")}),
     version = "2.0.0",
     versionDate = "2026-10-23",
     dateModified = "2026-10-23",
