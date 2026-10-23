@@ -289,7 +289,7 @@ Please also cite the relevant scientific publication(s) associated with the phys
 **Edgar Hernando Sepúlveda-Oviedo**  
 [ResearchGate](https://www.researchgate.net/profile/Edgar-Sepulveda-Oviedo)
 
-Laboratory for Analysis and Architecture of Systems (LAAS-CNRS), Toulouse, France.
+PRocédés, matériaux et énergie solaire (PROMES-CNRS), Perpignan, France.
 
 ### Contributors
 
@@ -330,7 +330,7 @@ Please use the **GitHub Issues** section of this repository whenever possible.
 
 You may also contact:
 
-- **Edgar Hernando Sepúlveda-Oviedo:** ehsepulved@laas.fr
+- **Edgar Hernando Sepúlveda-Oviedo:** edgar-hernando.sepulveda-oviedo@univ-perp.fr
 - **Leonardo Bermeo Clavijo:** lbermeoc@unal.edu.co
 
 ---
