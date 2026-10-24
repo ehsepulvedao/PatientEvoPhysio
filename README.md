@@ -64,35 +64,86 @@ Graphical resources used by OMEdit are stored under `Resources/Images/` and refe
 
 ---
 
-## 🚀 Installation and quick start
+## 🚀 Installation and configuration
 
 ### Requirements
 
-The library has been validated with:
+PatientEvoPhysio v2.0.0 has been validated with:
 
 ```text
 OpenModelica / OMEdit 1.27.1
 Physiolibrary 2.3.1
+Modelica 3.2.x compatible dependency stack
 ```
 
-The OpenModelica Package Manager installs the compatible Modelica dependencies required by Physiolibrary.
+> [!IMPORTANT]
+> Recent OpenModelica installations may automatically load the newest Modelica Standard Library (Modelica 4.x).  
+> **PatientEvoPhysio v2.0.0 must be used with the Modelica 3.2.x stack required by Physiolibrary 2.3.1.**
+> Do not mix Modelica 4.x / Complex 4.x / ModelicaServices 4.x with Physiolibrary 2.3.1 in the same OMEdit session.
 
-### Install Physiolibrary
+### 1. Disable automatic loading of the latest Modelica version
 
-1. Install OpenModelica and open **OMEdit**.
+Before opening `PatientEvoPhysio.mo`:
+
+1. Open **OMEdit**.
 2. Go to:
+
+   **Tools → Options → Libraries**
+
+3. Disable:
+
+   **Load latest Modelica version on startup**
+
+4. Apply the change.
+5. **Close OMEdit completely and restart it.**
+
+This prevents OMEdit from automatically loading a Modelica 4.x stack before PatientEvoPhysio is opened.
+
+### 2. Install Physiolibrary 2.3.1
+
+After restarting OMEdit:
+
+1. Go to:
 
    **File → Manage Libraries → Install Library**
 
-3. Select:
+2. Select:
 
    - **Library:** `Physiolibrary`
    - **Version:** `2.3.1`
    - Keep **Exact Match** enabled.
 
-4. Install the library.
-5. Restart OMEdit.
-6. Open `PatientEvoPhysio.mo`.
+3. Install the library.
+
+The OpenModelica Package Manager will install the compatible dependencies required by Physiolibrary.
+
+### 3. Load the compatible Modelica 3.2.x stack
+
+1. Return to:
+
+   **Tools → Options → Libraries**
+
+2. Manually select/load the **Modelica 3.2.x** version installed for Physiolibrary 2.3.1.
+3. Make sure that a Modelica 4.x version is **not** loaded in the same session.
+4. Restart OMEdit once more if required.
+
+Depending on the OpenModelica Package Manager revision, the installed compatible package may appear with a maintenance suffix such as `+maint.om`. This is normal.
+
+### 4. Open PatientEvoPhysio
+
+Only after the compatible libraries are available:
+
+1. Open `PatientEvoPhysio.mo`.
+2. Confirm that `PatientEvoPhysio` appears in the Libraries browser.
+3. Open any model under `PatientEvoPhysio.Scenarios`.
+
+If OMEdit reports that a base class from `Physiolibrary` cannot be found, close PatientEvoPhysio and verify that:
+
+- Physiolibrary **2.3.1** is installed and loaded;
+- the active Modelica stack is **3.2.x**, not 4.x;
+- no incompatible Modelica/Complex/ModelicaServices 4.x packages were loaded earlier in the session.
+
+Then restart OMEdit and reopen `PatientEvoPhysio.mo`.
 
 ### Clone the repository
 
@@ -101,7 +152,7 @@ git clone https://github.com/ehsepulvedao/PatientEvoPhysio.git
 cd PatientEvoPhysio
 ```
 
-Then open `PatientEvoPhysio.mo` with OMEdit.
+Then follow the configuration steps above and open `PatientEvoPhysio.mo` with OMEdit.
 
 ---
 
@@ -135,7 +186,7 @@ PatientEvoPhysio.Scenarios.Fetus.FetalToNeonatal_Transition
 4. Run the simulation.
 5. Inspect the physiological variables directly in OMEdit.
 
-No external scripts are required to run the simulator.
+No external scripts are required to use the simulator.
 
 ---
 
@@ -155,13 +206,13 @@ The generated CSV file is written to the simulation working directory. The OMEdi
 
 **Tools → Options → General → Working Directory**
 
-This allows users to generate their own simulation datasets directly from the physiological models without requiring additional utilities from the repository.
+This allows users to generate their own simulation datasets directly from the physiological models without requiring additional scripts from the repository.
 
 ---
 
 ## 📁 Public repository structure
 
-The public distribution intentionally contains only the simulator and the resources needed to use and cite it:
+The public distribution intentionally contains only the simulator and the resources required to use and cite it:
 
 ```text
 PatientEvoPhysio.mo
@@ -176,7 +227,7 @@ Resources/
         └── *.svg
 ```
 
-Simulation results, generated datasets, analysis scripts and local research workflows are not part of the public distribution.
+Simulation results, generated datasets, analysis scripts, validation pipelines and local research workflows are not part of the public distribution.
 
 ---
 
