@@ -49,5 +49,17 @@
     "rc6_extended_files_requiring_review": 0,
     "rc7_publication_pipeline_static_tests_required": true
   },
-  "release_status": "stable"
+  "release_status": "stable",
+  "dependencies": {
+    "direct": {
+      "Modelica": "3.2.3",
+      "Physiolibrary": "2.3.1"
+    },
+    "validated_resolved_stack": {
+      "Complex": "3.2.3",
+      "ModelicaServices": "3.2.3"
+    },
+    "canonical_bootstrap": "InstallPatientEvoPhysioDependencies.mos",
+    "windows_launcher": "INSTALL_DEPENDENCIES_WINDOWS.bat"
+  }
 }

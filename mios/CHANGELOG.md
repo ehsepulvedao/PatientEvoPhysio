@@ -10,6 +10,7 @@ Stable release promoted from the audited RC6/RC7 line.
 - retained automated validation, dataset-generation, QA and publication packaging workflows;
 - excluded generated numerical datasets from Git;
 - refreshed the README and GitHub release documentation.
+- unified dependency installation around a single fail-fast OpenModelica Package Manager bootstrap, with a Windows one-click launcher and clean-session load verification.
 
 ## 2.0.0-rc.7 — 2026-10-23
 

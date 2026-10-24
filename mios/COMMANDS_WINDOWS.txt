@@ -1,6 +1,15 @@
-PatientEvoPhysio v2.0.0-rc5
+PatientEvoPhysio v2.0.0
 WINDOWS COMMAND REFERENCE
 ================================
+
+DEPENDENCY INSTALLATION ON A FRESH PC
+-------------------------------------
+Run once before opening the library in OMEdit:
+    INSTALL_DEPENDENCIES_WINDOWS.bat
+
+This installs/verifies Modelica 3.2.3, Complex 3.2.3, ModelicaServices 3.2.3
+and Physiolibrary 2.3.1 through the OpenModelica Package Manager, then checks
+that PatientEvoPhysio.mo loads successfully. Restart OMEdit afterwards.
 
 RECOMMENDED ONE-CLICK WORKFLOW
 ------------------------------
