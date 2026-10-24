@@ -37,10 +37,7 @@ package PatientEvoPhysio
 
     class Cardiovascular_System
       annotation(
-        Icon(graphics = {Bitmap(
-          origin={0,0},
-          extent={{-200,200},{200,-200}},
-          fileName="modelica://PatientEvoPhysio/Resources/Images/icon/icons_cardiovascular_system.svg")}));
+        Icon(graphics = {Bitmap(origin = {0, 0}, extent = {{-95, 95}, {95, -95}}, fileName = "modelica://PatientEvoPhysio/Resources/Images/icon/icons_cardiovascular_system.svg")}));
     end Cardiovascular_System;
 
     class Valve_2
@@ -5685,23 +5682,14 @@ end Systemic_Vascular;
     </html>"));
   end UsersGuide;
   annotation(
-    Icon(graphics = {Bitmap(origin = {-4, 3}, extent = {{-122, 105}, {122, -105}}, fileName = "modelica://PatientEvoPhysio/Resources/Images/icon/package_root.svg")}),
-    version = "2.0.0",
-    versionDate = "2026-10-23",
-    dateModified = "2026-10-24",
-    uses(
-      Modelica(version = "3.2.3"),
-      Physiolibrary(version = "2.3.1")),
+    Icon(graphics = {Rectangle(origin = {0, 12}, lineColor = {85, 255, 127}, fillColor = {255, 255, 255}, fillPattern = FillPattern.VerticalCylinder, lineThickness = 0.75, extent = {{-98, 68}, {98, -68}}), Bitmap(origin = {2, 8}, extent = {{-96, 82}, {96, -82}}, fileName = "modelica://PatientEvoPhysio/Resources/Images/icon/package_root.svg")}),
+    version = "2.1.0",
+    versionDate = "2026-10-24",
+    dateModified = "2026-10-23",
+    uses(Modelica(version = "3.2.3"), Physiolibrary(version = "2.3.1")),
     Documentation(info = "<html><head></head><body><p>
 PatientEvoPhysio is an open-source Modelica library for cardiovascular and respiratory computational physiology across fetal, neonatal, child and adult scenarios. The project originated from research performed with collaborators at the National University of Colombia and LAAS-CNRS and is currently maintained by Edgar Hernando Sep&uacute;lveda-Oviedo at PROMES-CNRS (UPR 8521) and Universit&eacute; de Perpignan Via Domitia, Perpignan, France.
 </p><p>The library supports research and education in physiological situations where direct experimental investigation may be ethically or practically constrained. Code in this library has been adapted and/or adopted from Physiolibrary 2.3.1.</p>
-<h4>Dependencies</h4>
-<p>PatientEvoPhysio 2.0.0 declares the following external Modelica-library dependencies through the standard <code>uses</code> annotation:</p>
-<ul>
-<li>Modelica 3.2.3</li>
-<li>Physiolibrary 2.3.1</li>
-</ul>
-<p>The <code>uses(...)</code> annotation is the portable Modelica declaration of direct dependencies. Modelica tools use it to select and automatically load compatible versions that are already installed; the annotation itself does not download third-party packages. For a fresh OpenModelica installation, run <code>InstallPatientEvoPhysioDependencies.mos</code> (or <code>INSTALL_DEPENDENCIES_WINDOWS.bat</code> on Windows). The bootstrap uses the OpenModelica Package Manager, installs the validated Modelica 3.2.3 / Physiolibrary 2.3.1 stack and its required Complex / ModelicaServices 3.2.3-family dependencies, and verifies that this PatientEvoPhysio file loads successfully.</p>
 </body></html>", revisions = "<html>
   <table>
   <tr>

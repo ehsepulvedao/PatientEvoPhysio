@@ -2,8 +2,8 @@ cff-version: 1.2.0
 title: "PatientEvoPhysio"
 message: "If you use PatientEvoPhysio, please cite the software and the scientific publication corresponding to the scenario used."
 type: software
-version: "2.0.0"
-date-released: 2026-10-23
+version: "2.1.0"
+date-released: 2026-10-24
 doi: 10.5281/zenodo.10054996
 license: CC0-1.0
 authors:

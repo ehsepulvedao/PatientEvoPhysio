@@ -1,0 +1,20 @@
+name: PatientEvoPhysio integrity checks
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  static-integrity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Static Modelica audit
+        run: python tests/static_audit.py
+      - name: Physiological numeric baseline
+        run: python tests/compare_numeric_baseline.py
+      - name: Visual assets
+        run: python tests/test_visual_assets.py

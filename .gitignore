@@ -1,0 +1,50 @@
+# OpenModelica generated files
+*.mat
+*_res.csv
+*_res.mat
+*_init.xml
+*_info.json
+*_prof.xml
+*.log
+*.c
+*.h
+*.o
+*.obj
+*.exe
+*.makefile
+
+# Generated PatientEvoPhysio experiment data
+data/generated/*
+!data/generated/.gitkeep
+data/campaigns/*
+!data/campaigns/.gitkeep
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Isolated compiler/build workspace
+build/
+
+# Generated diagnostics
+data/diagnostics/*
+!data/diagnostics/.gitkeep
+
+# Generated publication/analysis artifacts
+data/quality/*
+!data/quality/.gitkeep
+data/analysis/*
+!data/analysis/.gitkeep
+release/*
+!release/.gitkeep
+
+# Private publication/data workspace
+Articles_and_Data_PRIVATE/
