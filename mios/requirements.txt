@@ -1,2 +1,0 @@
-# PatientEvoPhysio v2.0.0 Python utilities use the Python standard library only.
-# No third-party pip packages are required for the core generation/QA pipeline.

@@ -1,8 +1,0 @@
-Field,Provisional content
-Subject,"Biomedical Engineering; Computational Physiology"
-Specific subject area,"Neonatal cardiovascular and respiratory modelling; synthetic physiological data"
-Type of data,"Time-series CSV data; JSON metadata; quality-control tables; SVG quality-control figures"
-Data collection,"Mechanistic simulations generated with PatientEvoPhysio using OpenModelica; exact solver settings and software versions stored per run"
-Data source location,"In silico; not applicable as a physical sampling location"
-Data accessibility,"[TO COMPLETE: repository name, DOI, persistent URL]"
-Related research article,"Sepúlveda-Oviedo et al. (2022); Sepúlveda-Oviedo et al. (2024)"

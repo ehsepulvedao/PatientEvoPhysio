@@ -1,4 +1,0 @@
-scenario_id,parameter,min,max,scale,enabled,notes
-neonate_healthy,leftVentricularElastanceSignal.HR,,,linear,false,REPLACE with literature-supported range before use
-neonate_healthy,leftVentricle.volume_start,,,linear,false,REPLACE with literature-supported range before use
-neonate_healthy,pulmonaryArterialResistance.Conductance,,,log,false,Verify exact parameter path and physiological bounds before enabling
